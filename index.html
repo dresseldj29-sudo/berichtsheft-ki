@@ -9,16 +9,17 @@
 <style>
 
 /* =========================================================
-   MODERNES DESIGN
+   GRUNDSTIL
 ========================================================= */
 
 :root {
     --bg: #f3f6fb;
-    --card: rgba(255,255,255,0.92);
+    --card: rgba(255,255,255,0.94);
     --text: #172033;
     --muted: #64748b;
     --primary: #2563eb;
     --primary-dark: #1d4ed8;
+    --purple: #7c3aed;
     --success: #16a34a;
     --warning: #f59e0b;
     --danger: #dc2626;
@@ -36,6 +37,7 @@ html {
 
 body {
     margin: 0;
+
     font-family:
         Inter,
         ui-sans-serif,
@@ -44,6 +46,8 @@ body {
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
+
+    color: var(--text);
 
     background:
         radial-gradient(
@@ -57,8 +61,6 @@ body {
             transparent 30%
         ),
         var(--bg);
-
-    color: var(--text);
 }
 
 
@@ -70,6 +72,10 @@ header {
     position: relative;
     overflow: hidden;
 
+    color: white;
+
+    padding: 55px 20px 75px;
+
     background:
         linear-gradient(
             135deg,
@@ -77,14 +83,12 @@ header {
             #172554 55%,
             #312e81
         );
-
-    color: white;
-    padding: 55px 20px 70px;
 }
 
 .header-content {
     width: min(1180px, 94%);
     margin: auto;
+
     position: relative;
     z-index: 2;
 }
@@ -92,13 +96,17 @@ header {
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 9px;
 
     padding: 8px 14px;
+
     border-radius: 999px;
 
     background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.14);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
 
     font-size: 14px;
     font-weight: 700;
@@ -109,26 +117,32 @@ header {
 header h1 {
     margin: 18px 0 8px;
 
-    font-size: clamp(34px, 6vw, 62px);
+    font-size:
+        clamp(35px, 6vw, 62px);
+
     line-height: 1;
 
     letter-spacing: -2px;
 }
 
 header p {
+    max-width: 700px;
+
     margin: 0;
 
-    max-width: 650px;
-
     color: #cbd5e1;
+
     font-size: 17px;
 }
 
 .header-orb {
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 330px;
+    height: 330px;
+
+    right: -90px;
+    top: -130px;
 
     border-radius: 50%;
 
@@ -138,9 +152,6 @@ header p {
             rgba(96,165,250,0.35),
             transparent 65%
         );
-
-    right: -80px;
-    top: -120px;
 }
 
 
@@ -150,8 +161,13 @@ header p {
 
 .container {
     width: min(1180px, 94%);
-    margin: -35px auto 60px;
+
+    margin:
+        -38px auto
+        60px;
+
     position: relative;
+
     z-index: 3;
 }
 
@@ -163,7 +179,9 @@ header p {
 .card {
     background: var(--card);
 
-    border: 1px solid rgba(255,255,255,0.8);
+    border:
+        1px solid
+        rgba(255,255,255,0.85);
 
     border-radius: 24px;
 
@@ -184,7 +202,9 @@ header p {
 
 .card-header {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     gap: 15px;
@@ -198,10 +218,144 @@ header p {
 
 
 /* =========================================================
+   DOKUMENTTYP
+========================================================= */
+
+.document-types {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+.document-type {
+
+    position: relative;
+
+    padding: 19px;
+
+    border-radius: 18px;
+
+    border:
+        2px solid
+        var(--border);
+
+    background: white;
+
+    cursor: pointer;
+
+    transition:
+        .2s ease;
+
+    text-align: left;
+}
+
+.document-type:hover {
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #93c5fd;
+
+    box-shadow:
+        0 8px 22px
+        rgba(15,23,42,0.08);
+}
+
+.document-type.active {
+
+    border-color:
+        var(--primary);
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #eef2ff
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(37,99,235,0.12);
+}
+
+.document-type-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+}
+
+.document-type-title {
+
+    font-weight: 800;
+
+    font-size: 17px;
+}
+
+.document-type-description {
+
+    color:
+        var(--muted);
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+    line-height: 1.5;
+}
+
+.document-type-check {
+
+    position: absolute;
+
+    right: 14px;
+    top: 14px;
+
+    width: 25px;
+    height: 25px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 50%;
+
+    background:
+        var(--primary);
+
+    color: white;
+
+    font-size: 13px;
+
+    opacity: 0;
+
+    transform: scale(.7);
+
+    transition: .2s;
+}
+
+.document-type.active
+.document-type-check {
+
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* =========================================================
    GRID
 ========================================================= */
 
 .grid {
+
     display: grid;
 
     grid-template-columns:
@@ -211,8 +365,11 @@ header p {
 }
 
 .field {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
@@ -221,7 +378,9 @@ header p {
 }
 
 label {
+
     font-size: 14px;
+
     font-weight: 750;
 }
 
@@ -231,13 +390,16 @@ select {
 
     width: 100%;
 
-    padding: 14px 15px;
+    padding:
+        14px 15px;
 
     border-radius: 13px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    background: #fff;
+    background: white;
 
     color: var(--text);
 
@@ -247,22 +409,25 @@ select {
 
     transition:
         border-color .2s,
-        box-shadow .2s,
-        transform .2s;
+        box-shadow .2s;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
 
-    border-color: var(--primary);
+    border-color:
+        var(--primary);
 
     box-shadow:
-        0 0 0 4px rgba(37,99,235,0.10);
+        0 0 0 4px
+        rgba(37,99,235,0.10);
 }
 
 textarea {
+
     min-height: 150px;
+
     resize: vertical;
 }
 
@@ -272,6 +437,7 @@ textarea {
 ========================================================= */
 
 .tage {
+
     display: grid;
 
     grid-template-columns:
@@ -284,7 +450,9 @@ textarea {
 
 .tag {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     background: white;
 
@@ -302,11 +470,20 @@ textarea {
 }
 
 .tag:hover {
-    transform: translateY(-2px);
-    border-color: #93c5fd;
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        #93c5fd;
 }
 
 .tag.active {
+
+    color: white;
+
+    border-color:
+        transparent;
 
     background:
         linear-gradient(
@@ -315,12 +492,9 @@ textarea {
             #4f46e5
         );
 
-    color: white;
-
-    border-color: transparent;
-
     box-shadow:
-        0 8px 20px rgba(37,99,235,0.25);
+        0 8px 20px
+        rgba(37,99,235,0.25);
 }
 
 
@@ -329,9 +503,13 @@ textarea {
 ========================================================= */
 
 .buttons {
+
     display: flex;
+
     gap: 9px;
+
     flex-wrap: wrap;
+
     margin-top: 15px;
 }
 
@@ -341,7 +519,8 @@ button {
 
     border-radius: 12px;
 
-    padding: 12px 17px;
+    padding:
+        12px 17px;
 
     font-size: 14px;
 
@@ -351,20 +530,23 @@ button {
 
     transition:
         transform .18s,
-        box-shadow .18s,
-        opacity .18s;
+        box-shadow .18s;
 }
 
 button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
-        0 8px 18px rgba(15,23,42,0.12);
+        0 8px 18px
+        rgba(15,23,42,0.12);
 }
 
 button:active {
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 .primary {
@@ -380,23 +562,36 @@ button:active {
 }
 
 .success {
+
     color: white;
-    background: #16a34a;
+
+    background:
+        #16a34a;
 }
 
 .warning {
+
     color: white;
-    background: #f59e0b;
+
+    background:
+        #f59e0b;
 }
 
 .danger {
+
     color: white;
-    background: #dc2626;
+
+    background:
+        #dc2626;
 }
 
 .secondary {
-    color: #334155;
-    background: #e2e8f0;
+
+    color:
+        #334155;
+
+    background:
+        #e2e8f0;
 }
 
 
@@ -407,7 +602,9 @@ button:active {
 .ai-status {
 
     display: flex;
+
     align-items: center;
+
     gap: 13px;
 
     padding: 15px;
@@ -421,7 +618,9 @@ button:active {
             #eef2ff
         );
 
-    border: 1px solid #dbeafe;
+    border:
+        1px solid
+        #dbeafe;
 
     margin-bottom: 20px;
 }
@@ -432,6 +631,7 @@ button:active {
     height: 45px;
 
     display: grid;
+
     place-items: center;
 
     border-radius: 14px;
@@ -451,17 +651,21 @@ button:active {
 }
 
 .ai-status strong {
+
     display: block;
 }
 
 .ai-status span {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
     font-size: 13px;
 }
 
 
 /* =========================================================
-   PRÜFUNG
+   PRÜFBOX
 ========================================================= */
 
 .check-box {
@@ -474,9 +678,12 @@ button:active {
 
     border-radius: 15px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
-    background: #f8fafc;
+    background:
+        #f8fafc;
 }
 
 .check-box.show {
@@ -486,7 +693,9 @@ button:active {
 .check-title {
 
     display: flex;
+
     align-items: center;
+
     gap: 9px;
 
     font-weight: 800;
@@ -504,10 +713,13 @@ button:active {
 
 .check-list {
 
-    margin: 8px 0 0;
+    margin:
+        8px 0 0;
+
     padding-left: 20px;
 
-    color: #475569;
+    color:
+        #475569;
 }
 
 
@@ -523,7 +735,9 @@ button:active {
 
     border-radius: 18px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     background:
         linear-gradient(
@@ -541,7 +755,7 @@ button:active {
 
 
 /* =========================================================
-   WORD COUNTER
+   COUNTER
 ========================================================= */
 
 .counter {
@@ -550,14 +764,15 @@ button:active {
 
     font-size: 12px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
     margin-top: 5px;
 }
 
 
 /* =========================================================
-   WEEK
+   WOCHENÜBERSICHT
 ========================================================= */
 
 .week-grid {
@@ -572,35 +787,47 @@ button:active {
 
 .week-day {
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 15px;
 
     padding: 15px;
 
-    background: #fff;
+    background: white;
 
     transition: .2s;
 }
 
 .week-day:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(15,23,42,0.07);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(15,23,42,0.07);
 }
 
 .week-day strong {
+
     display: block;
+
     margin-bottom: 6px;
 }
 
 .small {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
     font-size: 13px;
 }
 
 
 /* =========================================================
-   SAVED
+   GESPEICHERTE BERICHTE
 ========================================================= */
 
 .saved-list {
@@ -619,25 +846,36 @@ button:active {
 
     border-radius: 16px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     background: white;
 }
 
 .saved-title {
+
     font-weight: 800;
 }
 
 .saved-date {
-    color: var(--muted);
+
+    color:
+        var(--muted);
+
     font-size: 12px;
+
     margin-top: 4px;
 }
 
 .saved-actions {
+
     display: flex;
+
     gap: 7px;
+
     flex-wrap: wrap;
+
     margin-top: 12px;
 }
 
@@ -650,9 +888,11 @@ footer {
 
     text-align: center;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 
-    padding: 30px 20px 50px;
+    padding:
+        30px 20px 50px;
 
     font-size: 13px;
 }
@@ -670,6 +910,10 @@ footer {
 
     .field.full {
         grid-column: auto;
+    }
+
+    .document-types {
+        grid-template-columns: 1fr;
     }
 
     .tage {
@@ -691,11 +935,13 @@ footer {
 
     .card {
         padding: 18px;
+
         border-radius: 19px;
     }
 
     header {
-        padding: 38px 20px 65px;
+        padding:
+            38px 20px 65px;
     }
 
     header h1 {
@@ -705,7 +951,7 @@ footer {
 
 
 /* =========================================================
-   PRINT
+   DRUCK
 ========================================================= */
 
 @media print {
@@ -723,12 +969,16 @@ footer {
     }
 
     .container {
+
         width: 100%;
+
         margin: 0;
     }
 
     .card {
+
         box-shadow: none;
+
         border: none;
     }
 }
@@ -739,6 +989,10 @@ footer {
 
 <body>
 
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header>
 
@@ -755,9 +1009,9 @@ footer {
         </h1>
 
         <p>
-            Schreibe deine Stichpunkte. Die KI erstellt deinen Bericht,
-            prüft ihn anschließend auf Wiederholungen und überarbeitet
-            ihn automatisch.
+            Schreibe deine Stichpunkte. Die KI erstellt daraus
+            einen passenden Bericht, prüft ihn automatisch und
+            überarbeitet unnötige Wiederholungen.
         </p>
 
     </div>
@@ -768,22 +1022,115 @@ footer {
 <div class="container">
 
 
-<!-- =====================================================
-     AUSBILDUNG
-===================================================== -->
+<!-- =======================================================
+     DOKUMENTTYP
+======================================================= -->
 
 <div class="card">
 
     <div class="card-header">
-        <h2>🎓 Ausbildungsdaten</h2>
+
+        <h2>
+            📄 Was möchtest du erstellen?
+        </h2>
+
     </div>
 
+
+    <div class="document-types">
+
+
+        <!-- BERICHTSHEFT -->
+
+        <div
+            id="typeBerichtsheft"
+            class="document-type active"
+            onclick="waehleDokumentTyp('berichtsheft')"
+        >
+
+            <div class="document-type-check">
+                ✓
+            </div>
+
+            <div class="document-type-icon">
+                📘
+            </div>
+
+            <div class="document-type-title">
+                Berichtsheft
+            </div>
+
+            <div class="document-type-description">
+                Für deine regelmäßigen Ausbildungs-
+                und Tätigkeitsberichte.
+            </div>
+
+        </div>
+
+
+        <!-- PRAKTIKUMSBERICHT -->
+
+        <div
+            id="typePraktikum"
+            class="document-type"
+            onclick="waehleDokumentTyp('praktikum')"
+        >
+
+            <div class="document-type-check">
+                ✓
+            </div>
+
+            <div class="document-type-icon">
+                🏢
+            </div>
+
+            <div class="document-type-title">
+                Praktikumsbericht
+            </div>
+
+            <div class="document-type-description">
+                Für Praktikumstage mit Tagesablauf,
+                Tätigkeiten und Erfahrungen.
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        id="dokumentHinweis"
+        class="small"
+    >
+        📘 Die KI erstellt einen klassischen Ausbildungsbericht.
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     AUSBILDUNGSDATEN
+======================================================= -->
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h2>
+            🎓 Persönliche Angaben
+        </h2>
+
+    </div>
+
+
     <div class="grid">
+
 
         <div class="field">
 
             <label>
-                Ausbildungsberuf
+                Ausbildungsberuf / Praktikumsbereich
             </label>
 
             <input
@@ -876,9 +1223,9 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     EINGABE
-===================================================== -->
+<!-- =======================================================
+     ARBEITSTAG
+======================================================= -->
 
 <div class="card">
 
@@ -900,12 +1247,14 @@ footer {
 
     <div class="tage">
 
+
         <button
             class="tag active"
             onclick="waehleTag('Montag', this)"
         >
             Montag
         </button>
+
 
         <button
             class="tag"
@@ -914,12 +1263,14 @@ footer {
             Dienstag
         </button>
 
+
         <button
             class="tag"
             onclick="waehleTag('Mittwoch', this)"
         >
             Mittwoch
         </button>
+
 
         <button
             class="tag"
@@ -928,6 +1279,7 @@ footer {
             Donnerstag
         </button>
 
+
         <button
             class="tag"
             onclick="waehleTag('Freitag', this)"
@@ -935,10 +1287,12 @@ footer {
             Freitag
         </button>
 
+
     </div>
 
 
     <div class="grid">
+
 
         <div class="field">
 
@@ -994,7 +1348,7 @@ footer {
             <textarea
                 id="notizen"
                 maxlength="3000"
-                placeholder="Schreibe hier deine kurzen Notizen hinein..."
+                placeholder="Schreibe hier einfach deine Notizen hinein. Auch einzelne Stichpunkte sind möglich."
             ></textarea>
 
             <div class="counter">
@@ -1002,6 +1356,7 @@ footer {
                 <span id="zeichen">
                     0
                 </span>
+
                 / 3000
 
             </div>
@@ -1020,11 +1375,12 @@ footer {
             🧠 Bericht mit KI erstellen
         </button>
 
+
         <button
             class="secondary"
             onclick="eingabenLoeschen()"
         >
-            🗑️ Löschen
+            🗑️ Eingaben löschen
         </button>
 
     </div>
@@ -1038,11 +1394,12 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     KI BERICHT
-===================================================== -->
+<!-- =======================================================
+     BERICHT
+======================================================= -->
 
 <div class="card">
+
 
     <div class="ai-status">
 
@@ -1057,7 +1414,7 @@ footer {
             </strong>
 
             <span>
-                Erstellt → liest → prüft → überarbeitet deinen Text
+                Erstellt → liest → prüft → überarbeitet
             </span>
 
         </div>
@@ -1068,7 +1425,7 @@ footer {
     <div class="card-header">
 
         <h2>
-            📄 Dein Bericht
+            📄 Generierter Bericht
         </h2>
 
     </div>
@@ -1082,7 +1439,7 @@ footer {
     </div>
 
 
-    <!-- PRÜFRESULTAT -->
+    <!-- AUTOMATISCHE PRÜFUNG -->
 
     <div
         id="pruefung"
@@ -1094,9 +1451,11 @@ footer {
             class="check-title"
         ></div>
 
+
         <div
             id="pruefungText"
         ></div>
+
 
         <ul
             id="pruefungListe"
@@ -1112,8 +1471,9 @@ footer {
             class="success"
             onclick="berichtSpeichern()"
         >
-            💾 Speichern
+            💾 Bericht speichern
         </button>
+
 
         <button
             class="warning"
@@ -1121,6 +1481,7 @@ footer {
         >
             ✏️ Bearbeiten
         </button>
+
 
         <button
             class="secondary"
@@ -1134,9 +1495,9 @@ footer {
 </div>
 
 
-<!-- =====================================================
+<!-- =======================================================
      WOCHENÜBERSICHT
-===================================================== -->
+======================================================= -->
 
 <div class="card">
 
@@ -1178,9 +1539,9 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     GESPEICHERT
-===================================================== -->
+<!-- =======================================================
+     GESPEICHERTE BERICHTE
+======================================================= -->
 
 <div class="card no-print">
 
@@ -1207,8 +1568,10 @@ footer {
 <footer>
 
     Berichtsheft KI · Version 1
+
     <br>
-    Läuft vollständig lokal auf deinem Gerät.
+
+    Läuft vollständig lokal in deinem Browser.
 
 </footer>
 
@@ -1216,55 +1579,65 @@ footer {
 <script>
 
 /* =========================================================
-   DATEN
+   EINSTELLUNGEN
+========================================================= */
+
+let dokumentTyp =
+    localStorage.getItem(
+        "berichtsheft_ki_dokumenttyp"
+    ) || "berichtsheft";
+
+
+let aktuellerTag = "Montag";
+
+
+/* =========================================================
+   TAGE
 ========================================================= */
 
 const tage = {
 
     Montag: {
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
     },
 
     Dienstag: {
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
     },
 
     Mittwoch: {
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
     },
 
     Donnerstag: {
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
     },
 
     Freitag: {
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
     }
 
 };
-
-
-let aktuellerTag = "Montag";
 
 
 /* =========================================================
@@ -1275,10 +1648,10 @@ function normalisieren(text) {
 
     return String(text || "")
         .toLowerCase()
-        .replace(/ä/g,"ae")
-        .replace(/ö/g,"oe")
-        .replace(/ü/g,"ue")
-        .replace(/ß/g,"ss");
+        .replace(/ä/g, "ae")
+        .replace(/ö/g, "oe")
+        .replace(/ü/g, "ue")
+        .replace(/ß/g, "ss");
 
 }
 
@@ -1311,38 +1684,116 @@ function enthaelt(text, woerter) {
 
 function grossSchreiben(text) {
 
-    if (!text) return "";
+    if (!text) {
+        return "";
+    }
 
-    return text.charAt(0).toUpperCase()
-        + text.slice(1);
+    return (
+        text.charAt(0).toUpperCase() +
+        text.slice(1)
+    );
 
 }
 
 
 /* =========================================================
-   TAG
+   DOKUMENTTYP AUSWÄHLEN
 ========================================================= */
 
-function waehleTag(tag, button) {
+function waehleDokumentTyp(typ) {
+
+    dokumentTyp = typ;
+
+
+    localStorage.setItem(
+        "berichtsheft_ki_dokumenttyp",
+        typ
+    );
+
+
+    const bericht =
+        document.getElementById(
+            "typeBerichtsheft"
+        );
+
+
+    const praktikum =
+        document.getElementById(
+            "typePraktikum"
+        );
+
+
+    bericht.classList.toggle(
+        "active",
+        typ === "berichtsheft"
+    );
+
+
+    praktikum.classList.toggle(
+        "active",
+        typ === "praktikum"
+    );
+
+
+    const hinweis =
+        document.getElementById(
+            "dokumentHinweis"
+        );
+
+
+    if (
+        typ === "praktikum"
+    ) {
+
+        hinweis.textContent =
+            "🏢 Die KI erstellt einen Praktikumsbericht mit Tagesablauf, Tätigkeiten und Erfahrungen.";
+
+    } else {
+
+        hinweis.textContent =
+            "📘 Die KI erstellt einen klassischen Ausbildungsbericht.";
+
+    }
+
+}
+
+
+/* =========================================================
+   TAG AUSWÄHLEN
+========================================================= */
+
+function waehleTag(
+    tag,
+    button
+) {
 
     speichereAktuellenTag();
 
-    aktuellerTag = tag;
+
+    aktuellerTag =
+        tag;
+
 
     document
         .querySelectorAll(".tag")
         .forEach(
             btn =>
-                btn.classList.remove("active")
+                btn.classList.remove(
+                    "active"
+                )
         );
 
-    button.classList.add("active");
 
-    document
-        .getElementById(
-            "aktuellerTagAnzeige"
-        )
-        .textContent = tag;
+    button.classList.add(
+        "active"
+    );
+
+
+    document.getElementById(
+        "aktuellerTagAnzeige"
+    ).textContent =
+        tag;
+
 
     ladeAktuellenTag();
 
@@ -1350,7 +1801,7 @@ function waehleTag(tag, button) {
 
 
 /* =========================================================
-   SPEICHERN
+   TAG SPEICHERN
 ========================================================= */
 
 function speichereAktuellenTag() {
@@ -1360,25 +1811,30 @@ function speichereAktuellenTag() {
             "arbeitszeit"
         ).value;
 
+
     tage[aktuellerTag].thema =
         document.getElementById(
             "thema"
         ).value;
+
 
     tage[aktuellerTag].stichwoerter =
         document.getElementById(
             "stichwoerter"
         ).value;
 
+
     tage[aktuellerTag].notizen =
         document.getElementById(
             "notizen"
         ).value;
 
+
     const bericht =
         document.getElementById(
             "bericht"
         ).textContent;
+
 
     if (
         bericht &&
@@ -1394,8 +1850,11 @@ function speichereAktuellenTag() {
 
     localStorage.setItem(
         "berichtsheft_ki_tage",
-        JSON.stringify(tage)
+        JSON.stringify(
+            tage
+        )
     );
+
 
     aktualisiereWochenuebersicht();
 
@@ -1403,7 +1862,7 @@ function speichereAktuellenTag() {
 
 
 /* =========================================================
-   LADEN
+   TAG LADEN
 ========================================================= */
 
 function ladeAktuellenTag() {
@@ -1452,7 +1911,9 @@ function ladeAktuellenTag() {
    AKTIVITÄTEN ERKENNEN
 ========================================================= */
 
-function erkenneAktivitaeten(text) {
+function erkenneAktivitaeten(
+    text
+) {
 
     const aktivitaeten = [];
 
@@ -1687,13 +2148,408 @@ function erkenneAktivitaeten(text) {
     }
 
 
+    if (
+        enthaelt(
+            text,
+            [
+                "besprechung",
+                "meeting",
+                "besprochen"
+            ]
+        )
+    ) {
+
+        aktivitaeten.push(
+            "an einer betrieblichen Besprechung teilgenommen"
+        );
+
+    }
+
+
+    if (
+        enthaelt(
+            text,
+            [
+                "telefon",
+                "telefonat",
+                "anruf"
+            ]
+        )
+    ) {
+
+        aktivitaeten.push(
+            "telefonische Gespräche geführt bzw. bearbeitet"
+        );
+
+    }
+
+
+    if (
+        enthaelt(
+            text,
+            [
+                "dokumentation",
+                "dokumentiert"
+            ]
+        )
+    ) {
+
+        aktivitaeten.push(
+            "die durchgeführten Arbeiten dokumentiert"
+        );
+
+    }
+
+
     return aktivitaeten;
 
 }
 
 
 /* =========================================================
-   BERICHT ERSTELLEN
+   NOTIZEN VERARBEITEN
+========================================================= */
+
+function verarbeiteNotizen(
+    notizen
+) {
+
+    if (
+        !notizen.trim()
+    ) {
+
+        return [];
+
+    }
+
+
+    return notizen
+        .split(/[.!?\n]+/)
+        .map(
+            satz =>
+                satz.trim()
+        )
+        .filter(Boolean)
+        .map(
+            satz =>
+                grossSchreiben(satz)
+        );
+
+}
+
+
+/* =========================================================
+   BERICHTSHEFT-TEXT
+========================================================= */
+
+function erstelleBerichtsheft(
+    beruf,
+    stil,
+    thema,
+    arbeitszeit,
+    stichwoerter,
+    notizen
+) {
+
+    const gesamterText =
+        [
+            thema,
+            stichwoerter,
+            notizen
+        ].join(" ");
+
+
+    const aktivitaeten =
+        erkenneAktivitaeten(
+            gesamterText
+        );
+
+
+    const freieNotizen =
+        verarbeiteNotizen(
+            notizen
+        );
+
+
+    let text = "";
+
+
+    if (thema) {
+
+        text +=
+            `Heute arbeitete ich im Bereich ${thema}.`;
+
+    } else {
+
+        text +=
+            "Heute führte ich verschiedene praktische und fachbezogene Tätigkeiten im Rahmen meiner Ausbildung durch.";
+
+    }
+
+
+    text += "\n\n";
+
+
+    if (
+        aktivitaeten.length > 0
+    ) {
+
+        text +=
+            "Dabei habe ich " +
+            aktivitaeten.join(
+                ", "
+            ) +
+            ".";
+
+    }
+
+
+    if (
+        freieNotizen.length > 0
+    ) {
+
+        text +=
+            "\n\nZusätzlich habe ich " +
+            freieNotizen.join(
+                ", "
+            ) +
+            ".";
+
+    }
+
+
+    if (
+        aktivitaeten.length === 0 &&
+        freieNotizen.length === 0
+    ) {
+
+        text +=
+            "Dabei führte ich die notierten Tätigkeiten sorgfältig und entsprechend den betrieblichen Vorgaben durch.";
+
+    }
+
+
+    if (
+        arbeitszeit
+    ) {
+
+        text +=
+            "\n\nArbeitszeit: " +
+            arbeitszeit;
+
+    }
+
+
+    if (
+        stil !== "kurz"
+    ) {
+
+        text +=
+            "\n\nZum Abschluss kontrollierte ich die durchgeführten Arbeiten und stellte sicher, dass der Arbeitsplatz wieder ordnungsgemäß hinterlassen wurde.";
+
+    }
+
+
+    if (
+        stil === "ausfuehrlich"
+    ) {
+
+        text +=
+            "\n\nDurch die Tätigkeiten konnte ich meine praktischen Kenntnisse weiter vertiefen und bereits erlernte Inhalte im Arbeitsalltag anwenden.";
+
+    }
+
+
+    if (
+        stil === "professionell" &&
+        beruf
+    ) {
+
+        text +=
+            `\n\nDie Tätigkeiten standen im direkten Zusammenhang mit meiner Ausbildung zum ${beruf}.`;
+
+    }
+
+
+    if (
+        stil === "kurz"
+    ) {
+
+        const teile =
+            text
+                .split("\n\n")
+                .slice(0,2);
+
+
+        text =
+            teile.join(
+                "\n\n"
+            );
+
+    }
+
+
+    return text.trim();
+
+}
+
+
+/* =========================================================
+   PRAKTIKUMSBERICHT
+========================================================= */
+
+function erstellePraktikumsbericht(
+    beruf,
+    stil,
+    thema,
+    arbeitszeit,
+    stichwoerter,
+    notizen
+) {
+
+    const gesamterText =
+        [
+            thema,
+            stichwoerter,
+            notizen
+        ].join(" ");
+
+
+    const aktivitaeten =
+        erkenneAktivitaeten(
+            gesamterText
+        );
+
+
+    const freieNotizen =
+        verarbeiteNotizen(
+            notizen
+        );
+
+
+    let text = "";
+
+
+    if (thema) {
+
+        text +=
+            `Heute war mein Praktikumsschwerpunkt ${thema}.`;
+
+    } else {
+
+        text +=
+            "Heute setzte ich mein Praktikum mit verschiedenen Tätigkeiten und Einblicken in den Arbeitsalltag fort.";
+
+    }
+
+
+    text += "\n\n";
+
+
+    if (
+        aktivitaeten.length > 0
+    ) {
+
+        text +=
+            "Während des Tages führte ich unter anderem " +
+            aktivitaeten.join(
+                ", "
+            ) +
+            ".";
+
+    } else {
+
+        text +=
+            "Während des Tages führte ich verschiedene Aufgaben durch und konnte dabei einen weiteren Einblick in den Arbeitsalltag erhalten.";
+
+    }
+
+
+    if (
+        freieNotizen.length > 0
+    ) {
+
+        text +=
+            "\n\nAußerdem habe ich " +
+            freieNotizen.join(
+                ", "
+            ) +
+            ".";
+
+    }
+
+
+    if (
+        arbeitszeit
+    ) {
+
+        text +=
+            "\n\nMeine Arbeitszeit betrug " +
+            arbeitszeit +
+            ".";
+
+    }
+
+
+    text +=
+        "\n\nDurch die Tätigkeiten konnte ich neue Erfahrungen sammeln und einen besseren Einblick in die Arbeitsabläufe erhalten.";
+
+
+    if (
+        beruf
+    ) {
+
+        text +=
+            ` Dabei konnte ich insbesondere den Bereich ${beruf} näher kennenlernen.`;
+
+    }
+
+
+    if (
+        stil === "professionell"
+    ) {
+
+        text +=
+            "\n\nBesonders interessant war für mich, die zuvor nur theoretisch bekannten Arbeitsabläufe praktisch zu erleben.";
+
+    }
+
+
+    if (
+        stil === "ausfuehrlich"
+    ) {
+
+        text +=
+            "\n\nDabei konnte ich beobachten, wie die einzelnen Arbeitsschritte organisiert werden und welche Bedeutung eine sorgfältige und strukturierte Arbeitsweise im betrieblichen Alltag hat.";
+
+    }
+
+
+    if (
+        stil === "kurz"
+    ) {
+
+        const teile =
+            text
+                .split("\n\n")
+                .slice(0,2);
+
+
+        text =
+            teile.join(
+                "\n\n"
+            );
+
+    }
+
+
+    return text.trim();
+
+}
+
+
+/* =========================================================
+   HAUPT-KI
 ========================================================= */
 
 function kiBerichtErstellen() {
@@ -1716,6 +2572,12 @@ function kiBerichtErstellen() {
     const thema =
         document.getElementById(
             "thema"
+        ).value.trim();
+
+
+    const arbeitszeit =
+        document.getElementById(
+            "arbeitszeit"
         ).value.trim();
 
 
@@ -1743,258 +2605,85 @@ function kiBerichtErstellen() {
         );
 
         return;
+
     }
 
 
     zeigeStatus(
-        "🧠 KI erstellt deinen Bericht...",
+        "🧠 KI erstellt deinen " +
+        (
+            dokumentTyp ===
+            "praktikum"
+                ? "Praktikumsbericht"
+                : "Berichtsheft-Eintrag"
+        ) +
+        "...",
         true
     );
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
 
-        const gesamterText =
-            [
-                thema,
-                stichwoerter,
-                notizen
-            ].join(" ");
+            let text;
 
-
-        const aktivitaeten =
-            erkenneAktivitaeten(
-                gesamterText
-            );
-
-
-        let text = "";
-
-
-        if (thema) {
-
-            text +=
-                `Heute arbeitete ich im Bereich ${thema}.`;
-
-        } else {
-
-            text +=
-                "Heute führte ich verschiedene praktische Tätigkeiten im Rahmen meiner Ausbildung durch.";
-
-        }
-
-
-        text += "\n\n";
-
-
-        if (
-            aktivitaeten.length > 0
-        ) {
-
-            text +=
-                "Dabei habe ich " +
-                aktivitaeten.join(", ") +
-                ".";
-
-        } else {
-
-            text +=
-                "Dabei führte ich die von mir notierten Tätigkeiten sorgfältig und entsprechend den betrieblichen Vorgaben durch.";
-
-        }
-
-
-        if (notizen) {
-
-            const saetze =
-                notizen
-                    .split(/[.!?\n]+/)
-                    .map(x => x.trim())
-                    .filter(Boolean);
-
-
-            if (saetze.length > 0) {
-
-                text +=
-                    "\n\nZusätzlich habe ich ";
-
-
-                text +=
-                    saetze
-                        .map(
-                            s =>
-                                grossSchreiben(s)
-                        )
-                        .join(", ");
-
-
-                text += ".";
-
-            }
-
-        }
-
-
-        if (
-            stil ===
-            "professionell"
-        ) {
-
-            text =
-                text.replace(
-                    /gemacht/g,
-                    "durchgeführt"
-                );
-
-        }
-
-
-        if (
-            stil ===
-            "kurz"
-        ) {
-
-            const teile =
-                text
-                    .split("\n\n")
-                    .slice(0,2);
-
-            text =
-                teile.join("\n\n");
-
-        }
-
-
-        if (
-            stil ===
-            "ausfuehrlich"
-        ) {
-
-            text +=
-                "\n\nDurch die Tätigkeiten konnte ich meine praktischen Kenntnisse weiter vertiefen und bereits erlernte Inhalte im Arbeitsalltag anwenden. Dabei achtete ich besonders auf eine sorgfältige Vorbereitung, eine strukturierte Arbeitsweise und die abschließende Kontrolle der Arbeitsergebnisse.";
-
-        }
-
-
-        if (beruf) {
 
             if (
-                stil ===
-                "professionell"
+                dokumentTyp ===
+                "praktikum"
             ) {
 
-                text +=
-                    `\n\nDie Tätigkeiten standen dabei im Zusammenhang mit meiner Ausbildung zum ${beruf}.`;
+                text =
+                    erstellePraktikumsbericht(
+                        beruf,
+                        stil,
+                        thema,
+                        arbeitszeit,
+                        stichwoerter,
+                        notizen
+                    );
+
+            } else {
+
+                text =
+                    erstelleBerichtsheft(
+                        beruf,
+                        stil,
+                        thema,
+                        arbeitszeit,
+                        stichwoerter,
+                        notizen
+                    );
 
             }
 
-        }
+
+            document.getElementById(
+                "bericht"
+            ).textContent =
+                text;
 
 
-        document.getElementById(
-            "bericht"
-        ).textContent =
-            text;
+            tage[aktuellerTag].bericht =
+                text;
 
 
-        tage[aktuellerTag].bericht =
-            text;
+            speichereAktuellenTag();
 
 
-        speichereAktuellenTag();
+            /*
+               AUTOMATISCHE PRÜFUNG
+            */
+
+            pruefeUndUeberarbeite(
+                text
+            );
 
 
-        /*
-           WICHTIG:
-           HIER STARTET DIE AUTOMATISCHE PRÜFUNG
-        */
-
-        pruefeUndUeberarbeite(text);
-
-
-    }, 450);
-
-}
-
-
-/* =========================================================
-   TEXT PRÜFEN
-========================================================= */
-
-function pruefeUndUeberarbeite(text) {
-
-    zeigeStatus(
-        "🔍 KI liest den Bericht und sucht nach Wiederholungen...",
-        true
+        },
+        500
     );
-
-
-    setTimeout(() => {
-
-
-        const analyse =
-            analysiereText(text);
-
-
-        if (
-            analyse.probleme.length === 0
-        ) {
-
-            zeigePruefung(
-                true,
-                "✓ Bericht geprüft",
-                "Die KI hat keine auffälligen Wiederholungen gefunden.",
-                []
-            );
-
-
-            zeigeStatus(
-                "✓ Bericht wurde geprüft.",
-                true
-            );
-
-
-            return;
-
-        }
-
-
-        const ueberarbeitet =
-            ueberarbeiteText(
-                text,
-                analyse
-            );
-
-
-        document.getElementById(
-            "bericht"
-        ).textContent =
-            ueberarbeitet;
-
-
-        tage[aktuellerTag].bericht =
-            ueberarbeitet;
-
-
-        speichereAktuellenTag();
-
-
-        zeigePruefung(
-            false,
-            "✨ Bericht automatisch überarbeitet",
-            "Die KI hat Wiederholungen erkannt und den Text verbessert.",
-            analyse.probleme
-        );
-
-
-        zeigeStatus(
-            "✨ Bericht wurde automatisch überarbeitet.",
-            true
-        );
-
-
-    }, 600);
 
 }
 
@@ -2003,7 +2692,9 @@ function pruefeUndUeberarbeite(text) {
    TEXT ANALYSIEREN
 ========================================================= */
 
-function analysiereText(text) {
+function analysiereText(
+    text
+) {
 
     const probleme = [];
 
@@ -2015,101 +2706,114 @@ function analysiereText(text) {
                 s =>
                     s.trim()
             )
-            .filter(
-                Boolean
-            );
+            .filter(Boolean);
 
-
-    /*
-       1. IDENTISCHE SÄTZE
-    */
 
     const gesehen =
         new Set();
 
 
-    saetze.forEach(satz => {
+    saetze.forEach(
+        satz => {
 
-        const normal =
-            normalisieren(
-                satz
-            )
-            .replace(
-                /[^a-z0-9äöüß ]/g,
-                ""
-            )
-            .trim();
-
-
-        if (
-            normal.length < 12
-        ) return;
+            const normal =
+                normalisieren(
+                    satz
+                )
+                .replace(
+                    /[^a-z0-9äöüß ]/g,
+                    ""
+                )
+                .trim();
 
 
-        if (
-            gesehen.has(normal)
-        ) {
+            if (
+                normal.length < 12
+            ) {
 
-            probleme.push(
-                "Ein Satz bzw. eine Aussage wurde doppelt verwendet."
+                return;
+
+            }
+
+
+            if (
+                gesehen.has(
+                    normal
+                )
+            ) {
+
+                probleme.push(
+                    "Eine Aussage wurde doppelt verwendet."
+                );
+
+            }
+
+
+            gesehen.add(
+                normal
             );
 
         }
-
-
-        gesehen.add(normal);
-
-    });
+    );
 
 
     /*
-       2. WORT-WIEDERHOLUNGEN
+       WORTZÄHLUNG
     */
 
-    const ignorieren = new Set([
+    const ignorieren =
+        new Set([
 
-        "der",
-        "die",
-        "das",
-        "und",
-        "oder",
-        "ich",
-        "habe",
-        "wurde",
-        "wird",
-        "heute",
-        "dabei",
-        "eine",
-        "einen",
-        "einem",
-        "im",
-        "in",
-        "mit",
-        "den",
-        "des",
-        "zu",
-        "auf",
-        "für",
-        "von",
-        "an",
-        "ist",
-        "war"
+            "der",
+            "die",
+            "das",
+            "und",
+            "oder",
+            "ich",
+            "habe",
+            "wurde",
+            "wird",
+            "heute",
+            "dabei",
+            "eine",
+            "einen",
+            "einem",
+            "im",
+            "in",
+            "mit",
+            "den",
+            "des",
+            "zu",
+            "auf",
+            "für",
+            "von",
+            "an",
+            "ist",
+            "war",
+            "durch",
+            "konnte",
+            "dort",
+            "auch"
 
-    ]);
+        ]);
 
 
     const woerter =
-        normalisieren(text)
-            .replace(
-                /[^a-z0-9äöüß ]/g,
-                " "
-            )
-            .split(/\s+/)
-            .filter(
-                wort =>
-                    wort.length >= 5 &&
-                    !ignorieren.has(wort)
-            );
+        normalisieren(
+            text
+        )
+        .replace(
+            /[^a-z0-9äöüß ]/g,
+            " "
+        )
+        .split(/\s+/)
+        .filter(
+            wort =>
+                wort.length >= 5 &&
+                !ignorieren.has(
+                    wort
+                )
+        );
 
 
     const zaehler = {};
@@ -2119,26 +2823,27 @@ function analysiereText(text) {
         wort => {
 
             zaehler[wort] =
-                (zaehler[wort] || 0) + 1;
+                (
+                    zaehler[wort] ||
+                    0
+                ) + 1;
 
         }
     );
 
 
-    const haeufige =
-        Object.keys(
-            zaehler
-        ).filter(
-            wort =>
-                zaehler[wort] >= 3
-        );
-
-
-    haeufige.forEach(
+    Object.keys(
+        zaehler
+    )
+    .filter(
+        wort =>
+            zaehler[wort] >= 3
+    )
+    .forEach(
         wort => {
 
             probleme.push(
-                `Das Wort "${wort}" kommt mehrfach vor.`
+                `Das Wort "${wort}" wird sehr häufig verwendet.`
             );
 
         }
@@ -2146,57 +2851,62 @@ function analysiereText(text) {
 
 
     /*
-       3. DOPPELTE AKTIVITÄTEN
+       AKTIVITÄTEN
     */
 
     const gruppen = [
 
         {
-            namen:[
+            namen: [
                 "oel",
                 "öl",
                 "oelwechsel",
                 "ölwechsel"
             ],
+
             text:
-                "Ölwechsel bzw. Öl wurde mehrfach erwähnt."
+                "Öl bzw. Ölwechsel wurde mehrfach erwähnt."
         },
 
         {
-            namen:[
+            namen: [
                 "bremse",
                 "bremsen",
                 "bremsanlage"
             ],
+
             text:
                 "Die Bremsanlage wurde mehrfach erwähnt."
         },
 
         {
-            namen:[
+            namen: [
                 "reifen",
                 "räder",
                 "rad"
             ],
+
             text:
                 "Reifen bzw. Räder wurden mehrfach erwähnt."
         },
 
         {
-            namen:[
+            namen: [
                 "diagnose",
                 "fehlerspeicher"
             ],
+
             text:
                 "Die Diagnose wurde mehrfach erwähnt."
         },
 
         {
-            namen:[
+            namen: [
                 "gereinigt",
                 "reinigung",
                 "waschen"
             ],
+
             text:
                 "Die Reinigung wurde mehrfach erwähnt."
         }
@@ -2215,12 +2925,18 @@ function analysiereText(text) {
 
                     const regex =
                         new RegExp(
-                            normalisieren(name),
+                            normalisieren(
+                                name
+                            ),
                             "gi"
                         );
 
+
                     const matches =
-                        text.match(regex);
+                        text.match(
+                            regex
+                        );
+
 
                     if (matches) {
 
@@ -2233,7 +2949,9 @@ function analysiereText(text) {
             );
 
 
-            if (count >= 2) {
+            if (
+                count >= 2
+            ) {
 
                 probleme.push(
                     gruppe.text
@@ -2245,14 +2963,14 @@ function analysiereText(text) {
     );
 
 
-    /*
-       DUPLIKATE ENTFERNEN
-    */
-
     return {
 
         probleme:
-            [...new Set(probleme)]
+            [
+                ...new Set(
+                    probleme
+                )
+            ]
 
     };
 
@@ -2260,12 +2978,11 @@ function analysiereText(text) {
 
 
 /* =========================================================
-   ÜBERARBEITEN
+   TEXT ÜBERARBEITEN
 ========================================================= */
 
 function ueberarbeiteText(
-    text,
-    analyse
+    text
 ) {
 
     let neu =
@@ -2278,7 +2995,9 @@ function ueberarbeiteText(
 
     const saetze =
         neu
-            .split(/(?<=[.!?])\s+/)
+            .split(
+                /(?<=[.!?])\s+/
+            )
             .map(
                 s =>
                     s.trim()
@@ -2288,7 +3007,8 @@ function ueberarbeiteText(
 
     const neueSaetze = [];
 
-    const gesehen = new Set();
+    const gesehen =
+        new Set();
 
 
     saetze.forEach(
@@ -2319,7 +3039,9 @@ function ueberarbeiteText(
 
 
             if (
-                !gesehen.has(normal)
+                !gesehen.has(
+                    normal
+                )
             ) {
 
                 neueSaetze.push(
@@ -2343,13 +3065,13 @@ function ueberarbeiteText(
 
 
     /*
-       Typische Wiederholungen zusammenführen
+       Ähnliche Aussagen zusammenfassen
     */
 
     neu =
         neu.replace(
-            /Ölwechsel durchgeführt.*?Öl.*?eingefüllt/gi,
-            "einen Ölwechsel durchgeführt und neues Motoröl eingefüllt"
+            /Ölwechsel durchgeführt.*?Motoröl erneuert/gi,
+            "einen Ölwechsel durchgeführt"
         );
 
 
@@ -2369,7 +3091,7 @@ function ueberarbeiteText(
 
     neu =
         neu.replace(
-            /das Fahrzeug gereinigt.*?Arbeitsbereich gereinigt/gi,
+            /Fahrzeug gereinigt.*?Arbeitsbereich gereinigt/gi,
             "das Fahrzeug und den Arbeitsbereich gereinigt"
         );
 
@@ -2385,10 +3107,6 @@ function ueberarbeiteText(
         );
 
 
-    /*
-       Satzzeichen bereinigen
-    */
-
     neu =
         neu.replace(
             /\s+([,.!?])/g,
@@ -2397,6 +3115,93 @@ function ueberarbeiteText(
 
 
     return neu.trim();
+
+}
+
+
+/* =========================================================
+   PRÜFEN + AUTOMATISCH ÜBERARBEITEN
+========================================================= */
+
+function pruefeUndUeberarbeite(
+    text
+) {
+
+    zeigeStatus(
+        "🔍 KI liest den Bericht und sucht nach Wiederholungen...",
+        true
+    );
+
+
+    setTimeout(
+        () => {
+
+
+            const analyse =
+                analysiereText(
+                    text
+                );
+
+
+            if (
+                analyse.probleme.length === 0
+            ) {
+
+                zeigePruefung(
+                    true,
+                    "✓ Bericht geprüft",
+                    "Die KI hat keine auffälligen Wiederholungen gefunden.",
+                    []
+                );
+
+
+                zeigeStatus(
+                    "✓ Bericht wurde geprüft.",
+                    true
+                );
+
+
+                return;
+
+            }
+
+
+            const ueberarbeitet =
+                ueberarbeiteText(
+                    text
+                );
+
+
+            document.getElementById(
+                "bericht"
+            ).textContent =
+                ueberarbeitet;
+
+
+            tage[aktuellerTag].bericht =
+                ueberarbeitet;
+
+
+            speichereAktuellenTag();
+
+
+            zeigePruefung(
+                false,
+                "✨ Bericht automatisch überarbeitet",
+                "Die KI hat Wiederholungen erkannt und den Text verbessert.",
+                analyse.probleme
+            );
+
+
+            zeigeStatus(
+                "✨ Bericht wurde automatisch überarbeitet.",
+                true
+            );
+
+
+        },
+        650
+    );
 
 }
 
@@ -2458,7 +3263,8 @@ function zeigePruefung(
         text;
 
 
-    liste.innerHTML = "";
+    liste.innerHTML =
+        "";
 
 
     probleme.forEach(
@@ -2469,8 +3275,10 @@ function zeigePruefung(
                     "li"
                 );
 
+
             li.textContent =
                 problem;
+
 
             liste.appendChild(
                 li
@@ -2533,7 +3341,7 @@ function zeigeStatus(
                 "none";
 
         },
-        3500
+        4000
     );
 
 }
@@ -2562,6 +3370,7 @@ function berichtBearbeiten() {
         );
 
         return;
+
     }
 
 
@@ -2588,8 +3397,8 @@ function berichtBearbeiten() {
 
 
         /*
-           Nach manueller Änderung
-           ebenfalls erneut prüfen.
+           Nach manueller Bearbeitung
+           erneut prüfen.
         */
 
         pruefeUndUeberarbeite(
@@ -2625,6 +3434,7 @@ function berichtSpeichern() {
         );
 
         return;
+
     }
 
 
@@ -2640,6 +3450,9 @@ function berichtSpeichern() {
 
         id:
             Date.now(),
+
+        typ:
+            dokumentTyp,
 
         tag:
             aktuellerTag,
@@ -2686,7 +3499,7 @@ function berichtSpeichern() {
 
 
 /* =========================================================
-   GESPEICHERTE ANZEIGEN
+   GESPEICHERTE BERICHTE
 ========================================================= */
 
 function zeigeGespeicherteBerichte() {
@@ -2705,7 +3518,8 @@ function zeigeGespeicherteBerichte() {
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     if (
@@ -2718,6 +3532,7 @@ function zeigeGespeicherteBerichte() {
             </div>`;
 
         return;
+
     }
 
 
@@ -2729,34 +3544,65 @@ function zeigeGespeicherteBerichte() {
                     "div"
                 );
 
+
             item.className =
                 "saved-item";
+
+
+            const typText =
+                bericht.typ ===
+                "praktikum"
+                    ? "🏢 Praktikumsbericht"
+                    : "📘 Berichtsheft";
 
 
             item.innerHTML = `
 
                 <div class="saved-title">
+
+                    ${typText}
+
+                    ·
+
                     ${bericht.tag}
-                    ${bericht.woche
-                        ? " · " + bericht.woche
-                        : ""}
+
+                    ${
+                        bericht.woche
+                            ? " · " +
+                              bericht.woche
+                            : ""
+                    }
+
                 </div>
 
+
                 <div class="saved-date">
+
                     ${bericht.datum}
+
                 </div>
+
 
                 <div
                     class="small"
                     style="margin-top:8px;"
                 >
-                    ${bericht.text.substring(
-                        0,
-                        180
-                    )}${bericht.text.length > 180
-                        ? "..."
-                        : ""}
+
+                    ${
+                        bericht.text.substring(
+                            0,
+                            180
+                        )
+                    }
+
+                    ${
+                        bericht.text.length > 180
+                            ? "..."
+                            : ""
+                    }
+
                 </div>
+
 
                 <div class="saved-actions">
 
@@ -2766,6 +3612,7 @@ function zeigeGespeicherteBerichte() {
                     >
                         Laden
                     </button>
+
 
                     <button
                         class="danger"
@@ -2790,7 +3637,7 @@ function zeigeGespeicherteBerichte() {
 
 
 /* =========================================================
-   LADEN
+   GESPEICHERTEN BERICHT LADEN
 ========================================================= */
 
 function ladeGespeichertenBericht(
@@ -2812,7 +3659,19 @@ function ladeGespeichertenBericht(
         );
 
 
-    if (!gefunden) return;
+    if (!gefunden) {
+        return;
+    }
+
+
+    /*
+       Dokumenttyp laden
+    */
+
+    waehleDokumentTyp(
+        gefunden.typ ||
+        "berichtsheft"
+    );
 
 
     document.getElementById(
@@ -2839,7 +3698,9 @@ function ladeGespeichertenBericht(
 
 
     document
-        .querySelectorAll(".tag")
+        .querySelectorAll(
+            ".tag"
+        )
         .forEach(
             button => {
 
@@ -2868,7 +3729,7 @@ function ladeGespeichertenBericht(
 
 
 /* =========================================================
-   LÖSCHEN
+   GESPEICHERTEN BERICHT LÖSCHEN
 ========================================================= */
 
 function loescheGespeichertenBericht(
@@ -2882,6 +3743,7 @@ function loescheGespeichertenBericht(
     ) {
 
         return;
+
     }
 
 
@@ -2931,7 +3793,8 @@ function aktualisiereWochenuebersicht() {
         );
 
 
-    container.innerHTML = "";
+    container.innerHTML =
+        "";
 
 
     Object.keys(tage)
@@ -2946,6 +3809,7 @@ function aktualisiereWochenuebersicht() {
                     document.createElement(
                         "div"
                     );
+
 
                 div.className =
                     "week-day";
@@ -3036,6 +3900,7 @@ function wochenberichtErstellen() {
         );
 
         return;
+
     }
 
 
@@ -3051,20 +3916,48 @@ function wochenberichtErstellen() {
         ).value;
 
 
-    let text =
-        `Wochenbericht${woche ? " – " + woche : ""}`;
+    let text;
 
 
-    if (beruf) {
+    if (
+        dokumentTyp ===
+        "praktikum"
+    ) {
+
+        text =
+            `Praktikumsbericht${woche ? " – " + woche : ""}`;
+
+
+        if (beruf) {
+
+            text +=
+                `\nPraktikumsbereich: ${beruf}`;
+
+        }
+
 
         text +=
-            `\nAusbildungsberuf: ${beruf}`;
+            "\n\nIn dieser Woche konnte ich verschiedene Einblicke in den betrieblichen Alltag gewinnen und unterschiedliche Tätigkeiten kennenlernen.\n\n";
+
+
+    } else {
+
+        text =
+            `Wochenbericht${woche ? " – " + woche : ""}`;
+
+
+        if (beruf) {
+
+            text +=
+                `\nAusbildungsberuf: ${beruf}`;
+
+        }
+
+
+        text +=
+            "\n\nIn dieser Woche führte ich verschiedene praktische und fachbezogene Tätigkeiten im Rahmen meiner Ausbildung durch.\n\n";
 
     }
-
-
-    text +=
-        "\n\nIn dieser Woche führte ich verschiedene praktische und fachbezogene Tätigkeiten im Rahmen meiner Ausbildung durch.\n\n";
 
 
     text +=
@@ -3073,8 +3966,20 @@ function wochenberichtErstellen() {
         );
 
 
-    text +=
-        "\n\nDurch die verschiedenen Tätigkeiten konnte ich meine praktischen Kenntnisse erweitern und bereits erlernte Inhalte im Arbeitsalltag anwenden.";
+    if (
+        dokumentTyp ===
+        "praktikum"
+    ) {
+
+        text +=
+            "\n\nDurch die verschiedenen Tätigkeiten konnte ich neue Erfahrungen sammeln und meinen Einblick in den Arbeitsalltag vertiefen.";
+
+    } else {
+
+        text +=
+            "\n\nDurch die verschiedenen Tätigkeiten konnte ich meine praktischen Kenntnisse erweitern und bereits erlernte Inhalte im Arbeitsalltag anwenden.";
+
+    }
 
 
     document.getElementById(
@@ -3092,7 +3997,7 @@ function wochenberichtErstellen() {
 
 
 /* =========================================================
-   LÖSCHEN
+   EINGABEN LÖSCHEN
 ========================================================= */
 
 function eingabenLoeschen() {
@@ -3104,16 +4009,17 @@ function eingabenLoeschen() {
     ) {
 
         return;
+
     }
 
 
     tage[aktuellerTag] = {
 
-        arbeitszeit:"",
-        thema:"",
-        stichwoerter:"",
-        notizen:"",
-        bericht:""
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
 
     };
 
@@ -3133,7 +4039,9 @@ function eingabenLoeschen() {
 
     localStorage.setItem(
         "berichtsheft_ki_tage",
-        JSON.stringify(tage)
+        JSON.stringify(
+            tage
+        )
     );
 
 
@@ -3149,23 +4057,6 @@ function eingabenLoeschen() {
    ZEICHENZÄHLER
 ========================================================= */
 
-document
-    .getElementById(
-        "notizen"
-    )
-    .addEventListener(
-        "input",
-        function() {
-
-            document.getElementById(
-                "zeichen"
-            ).textContent =
-                this.value.length;
-
-        }
-    );
-
-
 function aktualisiereZeichenzaehler() {
 
     document.getElementById(
@@ -3176,6 +4067,14 @@ function aktualisiereZeichenzaehler() {
         ).value.length;
 
 }
+
+
+document.getElementById(
+    "notizen"
+).addEventListener(
+    "input",
+    aktualisiereZeichenzaehler
+);
 
 
 /* =========================================================
@@ -3232,10 +4131,10 @@ function starten() {
                     }
                 );
 
-        } catch(e) {
+        } catch(error) {
 
             console.log(
-                "Daten konnten nicht geladen werden."
+                "Gespeicherte Daten konnten nicht geladen werden."
             );
 
         }
@@ -3249,7 +4148,9 @@ function starten() {
         );
 
 
-    if (beruf) {
+    if (
+        beruf
+    ) {
 
         document.getElementById(
             "beruf"
@@ -3265,7 +4166,9 @@ function starten() {
         );
 
 
-    if (woche) {
+    if (
+        woche
+    ) {
 
         document.getElementById(
             "woche"
@@ -3275,52 +4178,66 @@ function starten() {
     }
 
 
+    /*
+       Dokumenttyp anzeigen
+    */
+
+    waehleDokumentTyp(
+        dokumentTyp
+    );
+
+
     ladeAktuellenTag();
+
 
     zeigeGespeicherteBerichte();
 
+
     aktualisiereWochenuebersicht();
+
+
+    aktualisiereZeichenzaehler();
 
 }
 
 
 /* =========================================================
-   GRUNDDATEN SPEICHERN
+   GRUNDDATEN AUTOMATISCH SPEICHERN
 ========================================================= */
 
-document
-    .getElementById(
-        "beruf"
-    )
-    .addEventListener(
-        "input",
-        function() {
+document.getElementById(
+    "beruf"
+).addEventListener(
+    "input",
+    function() {
 
-            localStorage.setItem(
-                "berichtsheft_ki_beruf",
-                this.value
-            );
+        localStorage.setItem(
+            "berichtsheft_ki_beruf",
+            this.value
+        );
 
-        }
-    );
+    }
+);
 
 
-document
-    .getElementById(
-        "woche"
-    )
-    .addEventListener(
-        "input",
-        function() {
+document.getElementById(
+    "woche"
+).addEventListener(
+    "input",
+    function() {
 
-            localStorage.setItem(
-                "berichtsheft_ki_woche",
-                this.value
-            );
+        localStorage.setItem(
+            "berichtsheft_ki_woche",
+            this.value
+        );
 
-        }
-    );
+    }
+);
 
+
+/* =========================================================
+   STARTEN
+========================================================= */
 
 starten();
 
