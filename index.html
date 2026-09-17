@@ -1,4 +1,3 @@
-<```html
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -20,48 +19,57 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #111827, #2563eb);
+    background: linear-gradient(135deg, #111827, #263449);
     color: white;
     padding: 25px 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.15);
+    text-align: center;
 }
 
 header h1 {
     margin: 0;
-    font-size: 28px;
+    font-size: 30px;
 }
 
 header p {
-    margin: 7px 0 0;
-    opacity: .85;
+    margin: 8px 0 0;
+    color: #cbd5e1;
 }
 
 .container {
-    max-width: 1150px;
-    margin: auto;
-    padding: 20px;
+    width: min(1200px, 94%);
+    margin: 25px auto 50px;
 }
 
 .card {
     background: white;
     border-radius: 18px;
-    padding: 20px;
+    padding: 22px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
-h2 {
+.card h2 {
     margin-top: 0;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
 .field {
-    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.field.full {
+    grid-column: 1 / -1;
 }
 
 label {
-    display: block;
     font-weight: bold;
-    margin-bottom: 7px;
 }
 
 input,
@@ -69,9 +77,9 @@ textarea,
 select {
     width: 100%;
     padding: 13px;
-    border: 1px solid #d1d5db;
-    border-radius: 12px;
-    font-size: 16px;
+    border: 1px solid #ccd3dd;
+    border-radius: 10px;
+    font-size: 15px;
     outline: none;
     background: white;
 }
@@ -83,59 +91,48 @@ select:focus {
 }
 
 textarea {
-    min-height: 150px;
+    min-height: 130px;
     resize: vertical;
 }
 
-.days {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
+.tage {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
 }
 
-.day-button {
+.tag {
     border: none;
-    border-radius: 12px;
-    padding: 14px 8px;
-    background: #dfe4ea;
+    padding: 11px 17px;
+    border-radius: 999px;
+    background: #e5e7eb;
     cursor: pointer;
     font-weight: bold;
-    font-size: 14px;
 }
 
-.day-button.active {
+.tag:hover {
+    background: #d1d5db;
+}
+
+.tag.active {
     background: #2563eb;
     color: white;
 }
 
-.editor {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.report {
-    min-height: 220px;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #dbe1e8;
-    background: #f8fafc;
-    white-space: pre-wrap;
-    line-height: 1.65;
+.buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
 button {
     border: none;
-    border-radius: 12px;
-    padding: 13px 18px;
-    cursor: pointer;
-    font-size: 15px;
+    border-radius: 10px;
+    padding: 12px 17px;
     font-weight: bold;
-}
-
-button:hover {
-    opacity: .9;
+    cursor: pointer;
 }
 
 .primary {
@@ -143,14 +140,18 @@ button:hover {
     color: white;
 }
 
+.primary:hover {
+    background: #1d4ed8;
+}
+
 .success {
     background: #16a34a;
     color: white;
 }
 
-.secondary {
-    background: #e5e7eb;
-    color: #172033;
+.warning {
+    background: #f59e0b;
+    color: white;
 }
 
 .danger {
@@ -158,89 +159,107 @@ button:hover {
     color: white;
 }
 
-.button-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 15px;
+.secondary {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.report {
+    background: #f8fafc;
+    border: 1px solid #dbe2ea;
+    border-radius: 14px;
+    padding: 20px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    min-height: 150px;
 }
 
 .status {
-    display: none;
-    margin-top: 15px;
-    padding: 12px;
-    border-radius: 10px;
-}
-
-.status.show {
-    display: block;
+    margin-top: 12px;
+    padding: 10px;
+    border-radius: 9px;
     background: #eff6ff;
     color: #1d4ed8;
+    display: none;
 }
 
-.status.success {
-    display: block;
-    background: #ecfdf5;
-    color: #15803d;
-}
-
-.status.error {
-    display: block;
-    background: #fef2f2;
-    color: #b91c1c;
+.saved-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .saved-item {
-    background: #f8fafc;
-    padding: 14px;
+    border: 1px solid #dbe2ea;
     border-radius: 12px;
-    margin-bottom: 10px;
+    padding: 14px;
+    background: #fafafa;
+}
+
+.saved-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.saved-date {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.saved-actions {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
+}
+
+.week-day {
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    padding: 13px;
+    background: #fafafa;
+}
+
+.week-day strong {
+    display: block;
+    margin-bottom: 7px;
 }
 
 .small {
     font-size: 13px;
     color: #64748b;
-    margin-top: 4px;
 }
 
 .ai-box {
-    background: linear-gradient(135deg,#eff6ff,#f8fafc);
-    border: 1px solid #bfdbfe;
+    border: 2px solid #2563eb;
     border-radius: 15px;
-    padding: 15px;
-    margin-bottom: 18px;
+    padding: 17px;
+    background: #eff6ff;
+    margin-bottom: 15px;
 }
 
-.ai-box strong {
-    color: #1d4ed8;
-}
-
-.week-overview {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
-}
-
-.week-day {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 12px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.week-day.done {
-    border-color: #22c55e;
-    background: #f0fdf4;
-}
-
-.week-day strong {
-    display: block;
+.ai-title {
+    font-weight: bold;
+    font-size: 18px;
     margin-bottom: 5px;
+}
+
+.ai-subtitle {
+    color: #475569;
+    font-size: 14px;
+}
+
+.counter {
+    text-align: right;
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 5px;
 }
 
 footer {
@@ -249,60 +268,34 @@ footer {
     color: #64748b;
 }
 
-@media(max-width:800px) {
-
-    .editor {
+@media (max-width: 750px) {
+    .grid {
         grid-template-columns: 1fr;
     }
 
-    .week-overview {
-        grid-template-columns: repeat(2,1fr);
-    }
-}
-
-@media(max-width:500px) {
-
-    .container {
-        padding: 12px;
+    .field.full {
+        grid-column: auto;
     }
 
-    .card {
-        padding: 15px;
+    .week-grid {
+        grid-template-columns: 1fr;
     }
 
     header h1 {
-        font-size: 23px;
+        font-size: 25px;
     }
 
-    .days {
-        gap: 5px;
-    }
-
-    .day-button {
-        font-size: 11px;
-        padding: 12px 3px;
-    }
-
-    button {
-        width: 100%;
-    }
-
-    .saved-item {
-        flex-direction: column;
-        align-items: stretch;
+    .card {
+        padding: 17px;
     }
 }
 
 @media print {
-
     header,
-    .days,
-    .top-settings,
-    .notizen-card,
-    .saved-list,
+    .no-print,
     footer,
-    .button-row,
-    .ai-box {
+    .buttons,
+    .status {
         display: none !important;
     }
 
@@ -311,11 +304,8 @@ footer {
     }
 
     .container {
-        max-width: 100%;
-    }
-
-    .editor {
-        display: block;
+        width: 100%;
+        margin: 0;
     }
 
     .card {
@@ -334,77 +324,204 @@ footer {
 <body>
 
 <header>
-
-    <h1>🤖 Berichtsheft KI</h1>
-
-    <p>
-        Schreibe deine Notizen – die Webseite erstellt daraus deinen Bericht.
-    </p>
-
+    <h1>🧠 Berichtsheft KI</h1>
+    <p>Deine eigene lokale KI für Ausbildungsberichte</p>
 </header>
-
 
 <div class="container">
 
-    <!-- EINSTELLUNGEN -->
+    <!-- GRUNDDATEN -->
+    <div class="card">
+        <h2>🎓 Ausbildungsdaten</h2>
 
-    <div class="card top-settings">
+        <div class="grid">
 
-        <h2>📘 Mein Berichtsheft</h2>
+            <div class="field">
+                <label for="beruf">Ausbildungsberuf</label>
+                <input
+                    id="beruf"
+                    type="text"
+                    placeholder="z. B. Kfz-Mechatroniker"
+                >
+            </div>
 
-        <div class="field">
+            <div class="field">
+                <label for="woche">Woche</label>
+                <input
+                    id="woche"
+                    type="text"
+                    placeholder="z. B. KW 38"
+                >
+            </div>
 
-            <label>Beruf / Ausbildung</label>
+            <div class="field">
+                <label for="ausbildungsjahr">Ausbildungsjahr</label>
+                <select id="ausbildungsjahr">
+                    <option value="1">1. Ausbildungsjahr</option>
+                    <option value="2">2. Ausbildungsjahr</option>
+                    <option value="3">3. Ausbildungsjahr</option>
+                    <option value="4">4. Ausbildungsjahr</option>
+                </select>
+            </div>
 
-            <input
-                id="beruf"
-                type="text"
-                placeholder="z. B. Kfz-Mechatroniker"
-            >
+            <div class="field">
+                <label for="stil">Schreibstil</label>
+                <select id="stil">
+                    <option value="normal">Normal</option>
+                    <option value="einfach">Einfach</option>
+                    <option value="professionell">Professionell</option>
+                    <option value="kurz">Kurz</option>
+                    <option value="ausfuehrlich">Ausführlich</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TAGE -->
+    <div class="card">
+        <h2>📅 Arbeitstag</h2>
+
+        <div class="tage">
+            <button class="tag active" onclick="waehleTag('Montag', this)">
+                Montag
+            </button>
+
+            <button class="tag" onclick="waehleTag('Dienstag', this)">
+                Dienstag
+            </button>
+
+            <button class="tag" onclick="waehleTag('Mittwoch', this)">
+                Mittwoch
+            </button>
+
+            <button class="tag" onclick="waehleTag('Donnerstag', this)">
+                Donnerstag
+            </button>
+
+            <button class="tag" onclick="waehleTag('Freitag', this)">
+                Freitag
+            </button>
+        </div>
+
+        <div class="grid">
+
+            <div class="field">
+                <label for="arbeitszeit">Arbeitszeit</label>
+                <input
+                    id="arbeitszeit"
+                    type="text"
+                    placeholder="z. B. 07:30 - 16:30 Uhr"
+                >
+            </div>
+
+            <div class="field">
+                <label for="thema">Thema</label>
+                <input
+                    id="thema"
+                    type="text"
+                    placeholder="z. B. Wartung eines Fahrzeugs"
+                >
+            </div>
+
+            <div class="field full">
+                <label for="stichwoerter">
+                    🔑 Stichwörter
+                </label>
+
+                <input
+                    id="stichwoerter"
+                    type="text"
+                    placeholder="z. B. Ölwechsel, Bremsen, Reifen, Diagnose"
+                >
+            </div>
+
+            <div class="field full">
+                <label for="notizen">
+                    📝 Deine kurzen Notizen
+                </label>
+
+                <textarea
+                    id="notizen"
+                    maxlength="3000"
+                    placeholder="Schreibe hier einfach alles hinein, was du an diesem Tag gemacht hast. Es können auch nur Stichpunkte sein."
+                ></textarea>
+
+                <div class="counter">
+                    <span id="zeichen">0</span> / 3000
+                </div>
+            </div>
 
         </div>
 
+        <div class="buttons no-print">
 
-        <div class="field">
-
-            <label>Woche</label>
-
-            <input
-                id="woche"
-                type="text"
-                placeholder="z. B. 15.09.2026 – 19.09.2026"
+            <button
+                class="primary"
+                onclick="kiBerichtErstellen()"
             >
+                🧠 KI-Bericht erstellen
+            </button>
+
+            <button
+                class="secondary"
+                onclick="eingabenLoeschen()"
+            >
+                🗑️ Eingaben löschen
+            </button>
 
         </div>
 
+        <div id="status" class="status"></div>
+    </div>
 
-        <div class="field">
 
-            <label>Schreibstil</label>
+    <!-- KI -->
+    <div class="card">
 
-            <select id="stil">
+        <div class="ai-box">
+            <div class="ai-title">
+                🧠 Deine lokale Berichtsheft-KI
+            </div>
 
-                <option value="normal">
-                    Normal
-                </option>
+            <div class="ai-subtitle">
+                Die KI verarbeitet deine Stichwörter und Notizen direkt
+                in deinem Browser. Es wird keine externe KI-Verbindung benötigt.
+            </div>
+        </div>
 
-                <option value="einfach">
-                    Einfach und verständlich
-                </option>
+        <h2>📄 Generierter Bericht</h2>
 
-                <option value="professionell">
-                    Professionell
-                </option>
+        <div
+            id="bericht"
+            class="report"
+        >
+            Noch kein Bericht erstellt.
+        </div>
 
-                <option value="kurz">
-                    Kurz
-                </option>
+        <div class="buttons no-print">
 
-                <option value="ausführlich">
-                    Ausführlich
-                </option>
+            <button
+                class="success"
+                onclick="berichtSpeichern()"
+            >
+                💾 Bericht speichern
+            </button>
 
-            </select>
+            <button
+                class="warning"
+                onclick="berichtBearbeiten()"
+            >
+                ✏️ Bericht bearbeiten
+            </button>
+
+            <button
+                class="secondary"
+                onclick="window.print()"
+            >
+                🖨️ Drucken / PDF
+            </button>
 
         </div>
 
@@ -412,224 +529,25 @@ footer {
 
 
     <!-- WOCHENÜBERSICHT -->
-
     <div class="card">
 
-        <h2>📅 Meine Woche</h2>
-
-        <div class="week-overview" id="weekOverview"></div>
-
-    </div>
-
-
-    <!-- TAGE -->
-
-    <div class="days">
-
-        <button
-            class="day-button active"
-            onclick="selectDay('Montag',this)"
-        >
-            Montag
-        </button>
-
-        <button
-            class="day-button"
-            onclick="selectDay('Dienstag',this)"
-        >
-            Dienstag
-        </button>
-
-        <button
-            class="day-button"
-            onclick="selectDay('Mittwoch',this)"
-        >
-            Mittwoch
-        </button>
-
-        <button
-            class="day-button"
-            onclick="selectDay('Donnerstag',this)"
-        >
-            Donnerstag
-        </button>
-
-        <button
-            class="day-button"
-            onclick="selectDay('Freitag',this)"
-        >
-            Freitag
-        </button>
-
-    </div>
-
-
-    <!-- EDITOR -->
-
-    <div class="editor">
-
-
-        <!-- NOTIZEN -->
+        <h2>📊 Wochenübersicht</h2>
 
         <div
-            class="card notizen-card"
-            id="notizenCard"
-        >
+            id="wochenUebersicht"
+            class="week-grid"
+        ></div>
 
-            <h2>
-                📝
-                <span id="dayTitle">
-                    Montag
-                </span>
-            </h2>
-
-
-            <div class="ai-box">
-
-                <strong>🤖 So funktioniert die KI</strong>
-
-                <p>
-                    Schreibe einfach Stichwörter oder kurze Notizen.
-                    Du musst keine vollständigen Sätze schreiben.
-                </p>
-
-                <p>
-                    Beispiel:
-                    <br>
-                    <b>
-                        Golf Werkstatt – Öl gewechselt –
-                        Bremsen kontrolliert – Kunde informiert
-                    </b>
-                </p>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>⏰ Arbeitszeit</label>
-
-                <input
-                    id="arbeitszeit"
-                    type="text"
-                    placeholder="z. B. 08:00 – 16:30 Uhr"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>🔑 Stichwörter</label>
-
-                <input
-                    id="stichwoerter"
-                    type="text"
-                    placeholder="z. B. Ölwechsel, Bremsen, Kunde"
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>📝 Meine Notizen</label>
-
-                <textarea
-                    id="notizen"
-                    placeholder="Schreibe hier deine Notizen...
-
-Zum Beispiel:
-
-Golf in Werkstatt
-Öl gewechselt
-Bremsen kontrolliert
-Kunde erklärt was gemacht wurde"
-                ></textarea>
-
-            </div>
-
+        <div class="buttons no-print">
 
             <button
                 class="primary"
-                onclick="erstelleBericht()"
+                onclick="wochenberichtErstellen()"
             >
-                ✨ KI-TEXT ERSTELLEN
+                📚 Wochenbericht erstellen
             </button>
 
-
-            <div
-                id="status"
-                class="status"
-            ></div>
-
         </div>
-
-
-        <!-- BERICHT -->
-
-        <div class="card">
-
-            <h2>📄 Fertiger Bericht</h2>
-
-
-            <div
-                id="bericht"
-                class="report"
-            >
-                Noch kein Bericht erstellt.
-            </div>
-
-
-            <div class="button-row">
-
-                <button
-                    class="success"
-                    onclick="speichern()"
-                >
-                    💾 Speichern
-                </button>
-
-
-                <button
-                    class="secondary"
-                    onclick="berichtBearbeiten()"
-                >
-                    ✏️ Bearbeiten
-                </button>
-
-
-                <button
-                    class="secondary"
-                    onclick="window.print()"
-                >
-                    📄 PDF / Drucken
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- WOCHENBERICHT -->
-
-    <div class="card">
-
-        <h2>📚 Wochenbericht</h2>
-
-        <p>
-            Erstellt einen zusammenhängenden Wochenbericht
-            aus deinen fünf Tagen.
-        </p>
-
-        <button
-            class="primary"
-            onclick="erstelleWochenbericht()"
-        >
-            ✨ WOCHENBERICHT ERSTELLEN
-        </button>
 
         <div
             id="wochenbericht"
@@ -642,40 +560,40 @@ Kunde erklärt was gemacht wurde"
     </div>
 
 
-    <!-- GESPEICHERTE BERICHTE -->
+    <!-- GESPEICHERTE -->
+    <div class="card no-print">
 
-    <div class="card saved-list">
+        <h2>💾 Gespeicherte Berichte</h2>
 
-        <h2>💾 Gespeicherte Berichtshefte</h2>
-
-        <div id="gespeicherteBerichte">
-            Noch keine Berichte gespeichert.
-        </div>
+        <div
+            id="gespeicherteBerichte"
+            class="saved-list"
+        ></div>
 
     </div>
 
 </div>
 
-
 <footer>
-
-    Berichtsheft KI – Version 1
-    <br>
-    Läuft komplett im Browser
-
+    Berichtsheft KI Version 1 · Läuft vollständig lokal im Browser
 </footer>
 
 
 <script>
 
-/* =====================================================
-   DATEN
-===================================================== */
+/* =========================================================
+   BERUFSHEFT KI V1
+   KOMPLETT LOKAL
+   KEIN BACKEND
+   KEIN FETCH
+   KEINE API
+========================================================= */
+
 
 const tage = {
-
     Montag: {
         arbeitszeit: "",
+        thema: "",
         stichwoerter: "",
         notizen: "",
         bericht: ""
@@ -683,6 +601,7 @@ const tage = {
 
     Dienstag: {
         arbeitszeit: "",
+        thema: "",
         stichwoerter: "",
         notizen: "",
         bericht: ""
@@ -690,6 +609,7 @@ const tage = {
 
     Mittwoch: {
         arbeitszeit: "",
+        thema: "",
         stichwoerter: "",
         notizen: "",
         bericht: ""
@@ -697,6 +617,7 @@ const tage = {
 
     Donnerstag: {
         arbeitszeit: "",
+        thema: "",
         stichwoerter: "",
         notizen: "",
         bericht: ""
@@ -704,97 +625,91 @@ const tage = {
 
     Freitag: {
         arbeitszeit: "",
+        thema: "",
         stichwoerter: "",
         notizen: "",
         bericht: ""
     }
-
 };
 
 
 let aktuellerTag = "Montag";
 
 
-/* =====================================================
+/* =========================================================
    HILFSFUNKTIONEN
-===================================================== */
+========================================================= */
 
-function normalisiere(text) {
-
+function normalisieren(text) {
     return String(text || "")
-        .replace(/\s+/g, " ")
-        .trim();
-
+        .toLowerCase()
+        .replace(/ä/g, "ae")
+        .replace(/ö/g, "oe")
+        .replace(/ü/g, "ue")
+        .replace(/ß/g, "ss");
 }
 
 
-function ersterBuchstabeGross(text) {
+function grossSchreiben(text) {
 
     if (!text) return "";
 
-    return text.charAt(0).toUpperCase() +
-           text.slice(1);
-
-}
-
-
-function teileStichwoerter(text) {
-
-    return String(text || "")
-        .split(/[,;\n]+/)
-        .map(x => x.trim())
-        .filter(Boolean);
-
+    return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 
 function zufall(array) {
 
     return array[
-        Math.floor(
-            Math.random() * array.length
-        )
+        Math.floor(Math.random() * array.length)
     ];
-
 }
 
 
-/* =====================================================
-   TAG WECHSELN
-===================================================== */
+function stichwoerterAufteilen(text) {
 
-function selectDay(tag, button) {
+    return String(text || "")
+        .split(/[,;\n]+/)
+        .map(x => x.trim())
+        .filter(Boolean);
+}
 
-    speichereAktuelleEingabe();
+
+/* =========================================================
+   TAG AUSWÄHLEN
+========================================================= */
+
+function waehleTag(tag, button) {
+
+    speichereAktuellenTag();
 
     aktuellerTag = tag;
 
     document
-        .querySelectorAll(".day-button")
-        .forEach(btn =>
-            btn.classList.remove("active")
-        );
+        .querySelectorAll(".tag")
+        .forEach(btn => btn.classList.remove("active"));
 
-    button.classList.add("active");
+    if (button) {
+        button.classList.add("active");
+    }
 
-    document.getElementById("dayTitle").textContent =
-        tag;
-
-    ladeTag();
-
-    updateWeekOverview();
-
+    ladeAktuellenTag();
 }
 
 
-/* =====================================================
-   EINGABE SPEICHERN
-===================================================== */
+/* =========================================================
+   AKTUELLEN TAG SPEICHERN
+========================================================= */
 
-function speichereAktuelleEingabe() {
+function speichereAktuellenTag() {
+
+    if (!tage[aktuellerTag]) return;
 
     tage[aktuellerTag].arbeitszeit =
         document.getElementById("arbeitszeit").value;
+
+    tage[aktuellerTag].thema =
+        document.getElementById("thema").value;
 
     tage[aktuellerTag].stichwoerter =
         document.getElementById("stichwoerter").value;
@@ -802,910 +717,911 @@ function speichereAktuelleEingabe() {
     tage[aktuellerTag].notizen =
         document.getElementById("notizen").value;
 
-    const bericht =
+    tage[aktuellerTag].bericht =
         document.getElementById("bericht").textContent;
 
-    if (
-        bericht !==
-        "Noch kein Bericht erstellt."
-    ) {
+    localStorage.setItem(
+        "berichtsheft_ki_tage",
+        JSON.stringify(tage)
+    );
 
-        tage[aktuellerTag].bericht =
-            bericht;
-
-    }
-
+    aktualisiereWochenuebersicht();
 }
 
 
-/* =====================================================
+/* =========================================================
    TAG LADEN
-===================================================== */
+========================================================= */
 
-function ladeTag() {
+function ladeAktuellenTag() {
 
-    const daten =
-        tage[aktuellerTag];
+    const tag = tage[aktuellerTag];
 
     document.getElementById("arbeitszeit").value =
-        daten.arbeitszeit;
+        tag.arbeitszeit || "";
+
+    document.getElementById("thema").value =
+        tag.thema || "";
 
     document.getElementById("stichwoerter").value =
-        daten.stichwoerter;
+        tag.stichwoerter || "";
 
     document.getElementById("notizen").value =
-        daten.notizen;
+        tag.notizen || "";
 
     document.getElementById("bericht").textContent =
-        daten.bericht ||
-        "Noch kein Bericht erstellt.";
+        tag.bericht || "Noch kein Bericht erstellt.";
 
+    aktualisiereZeichenzaehler();
 }
 
 
-/* =====================================================
+/* =========================================================
    STATUS
-===================================================== */
+========================================================= */
 
-function setStatus(text, type = "") {
+function status(text) {
 
-    const status =
-        document.getElementById("status");
+    const box = document.getElementById("status");
 
-    status.textContent =
-        text;
+    box.textContent = text;
+    box.style.display = "block";
 
-    status.className =
-        "status show " + type;
+    setTimeout(() => {
 
+        box.style.display = "none";
+
+    }, 3000);
 }
 
 
-/* =====================================================
-   LOKALE "KI"
-===================================================== */
+/* =========================================================
+   TEXT ERKENNEN
+========================================================= */
 
-function erstelleBericht() {
+function enthaelt(text, suchwoerter) {
 
-    speichereAktuelleEingabe();
+    const normal = normalisieren(text);
 
-    const daten =
-        tage[aktuellerTag];
+    return suchwoerter.some(
+        wort => normal.includes(normalisieren(wort))
+    );
+}
 
-    const notizen =
-        normalisiere(daten.notizen);
 
-    const stichwoerter =
-        teileStichwoerter(
-            daten.stichwoerter
+/* =========================================================
+   AKTIVITÄTEN ERKENNEN
+========================================================= */
+
+function erkenneAktivitaeten(text) {
+
+    const aktivitaeten = [];
+
+    if (enthaelt(text, [
+        "oelwechsel",
+        "oel",
+        "ölwechsel",
+        "öl"
+    ])) {
+
+        aktivitaeten.push(
+            zufall([
+                "einen Ölwechsel durchgeführt",
+                "das Motoröl erneuert",
+                "das alte Motoröl abgelassen und durch neues Öl ersetzt"
+            ])
         );
+    }
+
+
+    if (enthaelt(text, [
+        "bremse",
+        "bremsen",
+        "bremsanlage"
+    ])) {
+
+        aktivitaeten.push(
+            zufall([
+                "die Bremsanlage kontrolliert",
+                "die Bremsen überprüft",
+                "eine Kontrolle der Bremsanlage durchgeführt"
+            ])
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "reifen",
+        "rad",
+        "räder"
+    ])) {
+
+        aktivitaeten.push(
+            zufall([
+                "die Räder bzw. Reifen kontrolliert",
+                "einen Reifenwechsel durchgeführt",
+                "die Reifen auf ihren Zustand und Luftdruck geprüft"
+            ])
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "luftdruck",
+        "reifendruck"
+    ])) {
+
+        aktivitaeten.push(
+            "den Reifendruck kontrolliert und bei Bedarf korrigiert"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "diagnose",
+        "fehlerspeicher",
+        "fehler ausgelesen"
+    ])) {
+
+        aktivitaeten.push(
+            zufall([
+                "eine Fahrzeugdiagnose durchgeführt",
+                "den Fehlerspeicher des Fahrzeugs ausgelesen",
+                "das Fahrzeug mit einem Diagnosegerät überprüft"
+            ])
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "motor"
+    ])) {
+
+        aktivitaeten.push(
+            "den Motorbereich kontrolliert"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "fahrzeug",
+        "auto"
+    ])) {
+
+        aktivitaeten.push(
+            "eine allgemeine Kontrolle des Fahrzeugs durchgeführt"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "kunde",
+        "kundengespräch"
+    ])) {
+
+        aktivitaeten.push(
+            "Informationen mit dem Kunden besprochen"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "werkzeug",
+        "werkzeuge"
+    ])) {
+
+        aktivitaeten.push(
+            "die benötigten Werkzeuge vorbereitet und anschließend wieder ordnungsgemäß verstaut"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "werkstatt",
+        "aufgeraeumt",
+        "aufgeräumt",
+        "aufräumen"
+    ])) {
+
+        aktivitaeten.push(
+            "den Arbeitsplatz aufgeräumt und für die nächsten Arbeiten vorbereitet"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "reinigung",
+        "gereinigt",
+        "waschen"
+    ])) {
+
+        aktivitaeten.push(
+            "das Fahrzeug bzw. den Arbeitsbereich gereinigt"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "unterweisung",
+        "lernen",
+        "schule",
+        "theorie"
+    ])) {
+
+        aktivitaeten.push(
+            "fachbezogene Kenntnisse vertieft und die theoretischen Grundlagen wiederholt"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "bremsfluessigkeit",
+        "bremsflüssigkeit"
+    ])) {
+
+        aktivitaeten.push(
+            "die Bremsflüssigkeit kontrolliert"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "batterie",
+        "akku"
+    ])) {
+
+        aktivitaeten.push(
+            "die Fahrzeugbatterie kontrolliert"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "licht",
+        "beleuchtung",
+        "scheinwerfer"
+    ])) {
+
+        aktivitaeten.push(
+            "die Beleuchtung und Funktion der Lichtanlage überprüft"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "luftfilter"
+    ])) {
+
+        aktivitaeten.push(
+            "den Luftfilter kontrolliert bzw. erneuert"
+        );
+    }
+
+
+    if (enthaelt(text, [
+        "innenraum"
+    ])) {
+
+        aktivitaeten.push(
+            "den Innenraum des Fahrzeugs gereinigt und kontrolliert"
+        );
+    }
+
+
+    return aktivitaeten;
+}
+
+
+/* =========================================================
+   UNBEKANNTE NOTIZEN AUFBEREITEN
+========================================================= */
+
+function verarbeiteNotizen(notizen) {
+
+    if (!notizen.trim()) {
+        return [];
+    }
+
+    const saetze = notizen
+        .split(/[.!?\n]+/)
+        .map(x => x.trim())
+        .filter(Boolean);
+
+    return saetze.map(satz => {
+
+        return grossSchreiben(satz);
+
+    });
+}
+
+
+/* =========================================================
+   EINLEITUNG
+========================================================= */
+
+function erstelleEinleitung(stil, beruf, thema) {
+
+    if (stil === "kurz") {
+
+        return thema
+            ? `Heute arbeitete ich im Bereich ${thema}.`
+            : "Heute führte ich verschiedene praktische Arbeiten durch.";
+    }
+
+
+    if (stil === "einfach") {
+
+        return thema
+            ? `Heute arbeitete ich im Bereich ${thema}.`
+            : "Heute habe ich verschiedene Arbeiten durchgeführt.";
+    }
+
+
+    if (stil === "professionell") {
+
+        return thema
+            ? `Im Rahmen meiner Ausbildung zum ${beruf || "Auszubildenden"} arbeitete ich heute im Bereich ${thema}.`
+            : `Im Rahmen meiner Ausbildung führte ich heute verschiedene fachbezogene Arbeiten durch.`;
+    }
+
+
+    return thema
+        ? `Heute arbeitete ich im Rahmen meiner Ausbildung im Bereich ${thema}.`
+        : "Heute führte ich verschiedene praktische und fachbezogene Arbeiten durch.";
+}
+
+
+/* =========================================================
+   ABSCHLUSS
+========================================================= */
+
+function erstelleAbschluss(stil) {
+
+    if (stil === "kurz") {
+        return "Die Arbeiten wurden anschließend kontrolliert und abgeschlossen.";
+    }
+
+    if (stil === "einfach") {
+        return "Zum Schluss kontrollierte ich meine Arbeit und räumte meinen Arbeitsplatz auf.";
+    }
+
+    if (stil === "professionell") {
+        return "Abschließend wurden die durchgeführten Arbeiten kontrolliert und der Arbeitsplatz ordnungsgemäß hinterlassen.";
+    }
+
+    return "Zum Abschluss kontrollierte ich die durchgeführten Arbeiten und stellte sicher, dass der Arbeitsplatz wieder ordnungsgemäß vorbereitet war.";
+}
+
+
+/* =========================================================
+   HAUPT-KI
+========================================================= */
+
+function kiBerichtErstellen() {
+
+    speichereAktuellenTag();
 
     const beruf =
-        normalisiere(
-            document.getElementById("beruf").value
-        );
+        document.getElementById("beruf").value.trim();
 
     const stil =
         document.getElementById("stil").value;
 
+    const arbeitszeit =
+        document.getElementById("arbeitszeit").value.trim();
 
-    if (!notizen && stichwoerter.length === 0) {
+    const thema =
+        document.getElementById("thema").value.trim();
 
-        setStatus(
-            "❌ Bitte gib zuerst Notizen oder Stichwörter ein.",
-            "error"
-        );
+    const stichwoerter =
+        document.getElementById("stichwoerter").value.trim();
+
+    const notizen =
+        document.getElementById("notizen").value.trim();
+
+
+    if (!stichwoerter && !notizen && !thema) {
+
+        status("Bitte gib zuerst Stichwörter oder Notizen ein.");
 
         return;
-
     }
 
 
-    setStatus(
-        "🤖 Die KI erstellt deinen Bericht..."
-    );
+    status("🧠 Deine lokale KI erstellt den Bericht...");
 
 
     setTimeout(() => {
 
-        const bericht =
-            generiereBericht(
-                daten,
-                stichwoerter,
-                beruf,
-                stil
-            );
+        const gesamterText = [
+            thema,
+            stichwoerter,
+            notizen
+        ].join(" ");
 
-        tage[aktuellerTag].bericht =
-            bericht;
+
+        const aktivitaeten =
+            erkenneAktivitaeten(gesamterText);
+
+
+        const freieNotizen =
+            verarbeiteNotizen(notizen);
+
+
+        let text = "";
+
+
+        /* EINLEITUNG */
+
+        text += erstelleEinleitung(
+            stil,
+            beruf,
+            thema
+        );
+
+
+        text += "\n\n";
+
+
+        /* AKTIVITÄTEN */
+
+        if (aktivitaeten.length > 0) {
+
+            if (stil === "kurz") {
+
+                text += aktivitaeten
+                    .slice(0, 4)
+                    .join(", ") + ".";
+
+            } else {
+
+                const satz =
+                    aktivitaeten.join(", ");
+
+                text +=
+                    "Dabei habe ich " +
+                    satz +
+                    ".";
+            }
+        }
+
+
+        /* FREIE NOTIZEN */
+
+        if (freieNotizen.length > 0) {
+
+            text += "\n\n";
+
+            if (stil === "professionell") {
+
+                text +=
+                    "Zusätzlich wurden folgende Tätigkeiten durchgeführt: ";
+
+            } else {
+
+                text +=
+                    "Zusätzlich habe ich Folgendes gemacht: ";
+            }
+
+            text += freieNotizen.join(", ") + ".";
+        }
+
+
+        /* FALLS NICHTS ERKANNT WURDE */
+
+        if (
+            aktivitaeten.length === 0 &&
+            freieNotizen.length === 0
+        ) {
+
+            text +=
+                "\n\nIch führte die von mir notierten Tätigkeiten entsprechend den betrieblichen Vorgaben durch und achtete dabei auf eine sorgfältige Arbeitsweise.";
+        }
+
+
+        /* ARBEITSZEIT */
+
+        if (arbeitszeit) {
+
+            text +=
+                "\n\nArbeitszeit: " +
+                arbeitszeit;
+        }
+
+
+        /* ABSCHLUSS */
+
+        if (stil !== "kurz") {
+
+            text +=
+                "\n\n" +
+                erstelleAbschluss(stil);
+        }
+
+
+        /* AUSFÜHRLICH */
+
+        if (stil === "ausfuehrlich") {
+
+            text +=
+                "\n\nWährend der Arbeiten konnte ich meine praktischen Kenntnisse weiter vertiefen. Besonders wichtig war dabei die sorgfältige Vorbereitung der einzelnen Arbeitsschritte sowie die anschließende Kontrolle der Ergebnisse.";
+        }
+
+
+        /* BERUF */
+
+        if (
+            beruf &&
+            stil === "professionell"
+        ) {
+
+            text +=
+                "\n\nDie Tätigkeiten standen dabei im direkten Zusammenhang mit meiner Ausbildung zum " +
+                beruf +
+                ".";
+        }
+
 
         document.getElementById("bericht").textContent =
-            bericht;
+            text;
 
-        setStatus(
-            "✅ Bericht wurde erstellt.",
-            "success"
-        );
 
-        updateWeekOverview();
+        tage[aktuellerTag].bericht = text;
+
+        speichereAktuellenTag();
+
+        aktualisiereWochenuebersicht();
+
+        status("✅ Bericht wurde erfolgreich erstellt.");
 
     }, 500);
-
 }
 
 
-/* =====================================================
-   BERICHT GENERIEREN
-===================================================== */
-
-function generiereBericht(
-    daten,
-    stichwoerter,
-    beruf,
-    stil
-) {
-
-    let notizen =
-        normalisiere(daten.notizen);
-
-
-    /*
-       Wir teilen die Notizen in einzelne
-       Aussagen auf.
-    */
-
-    let saetze =
-        daten.notizen
-            .split(/\n|[.!?]+/)
-            .map(x => normalisiere(x))
-            .filter(Boolean);
-
-
-    /*
-       Stichwörter und Notizen zusammenführen.
-    */
-
-    let alleInfos = [];
-
-    saetze.forEach(x => {
-
-        if (!alleInfos.includes(x)) {
-            alleInfos.push(x);
-        }
-
-    });
-
-
-    stichwoerter.forEach(x => {
-
-        if (
-            !alleInfos.some(
-                info =>
-                    info.toLowerCase()
-                    .includes(x.toLowerCase())
-            )
-        ) {
-
-            alleInfos.push(x);
-
-        }
-
-    });
-
-
-    /*
-       Bekannte Tätigkeiten erkennen
-    */
-
-    const aktivitaeten = [];
-
-
-    const regeln = [
-
-        {
-            such: [
-                "ölwechsel",
-                "öl gewechselt",
-                "öl"
-            ],
-            text:
-                "einen Ölwechsel durchgeführt"
-        },
-
-        {
-            such: [
-                "bremsen",
-                "bremse",
-                "bremsanlage"
-            ],
-            text:
-                "die Bremsanlage kontrolliert"
-        },
-
-        {
-            such: [
-                "reifen",
-                "reifenwechsel",
-                "räder"
-            ],
-            text:
-                "Arbeiten an den Rädern beziehungsweise Reifen durchgeführt"
-        },
-
-        {
-            such: [
-                "kunde",
-                "kunden",
-                "kundengespräch"
-            ],
-            text:
-                "einen Kunden über die durchgeführten Arbeiten informiert"
-        },
-
-        {
-            such: [
-                "werkstatt"
-            ],
-            text:
-                "in der Werkstatt gearbeitet"
-        },
-
-        {
-            such: [
-                "fahrzeug",
-                "auto",
-                "wagen",
-                "golf"
-            ],
-            text:
-                "an einem Fahrzeug gearbeitet"
-        },
-
-        {
-            such: [
-                "diagnose",
-                "diagnosegerät",
-                "fehler ausgelesen"
-            ],
-            text:
-                "eine Fahrzeugdiagnose durchgeführt"
-        },
-
-        {
-            such: [
-                "luftdruck"
-            ],
-            text:
-                "den Reifendruck kontrolliert"
-        },
-
-        {
-            such: [
-                "motor"
-            ],
-            text:
-                "Arbeiten am Motor durchgeführt"
-        },
-
-        {
-            such: [
-                "lernen",
-                "gelernt",
-                "unterweisung"
-            ],
-            text:
-                "neue Arbeitsabläufe kennengelernt und dabei praktische Erfahrungen gesammelt"
-        },
-
-        {
-            such: [
-                "aufgeräumt",
-                "werkstatt aufgeräumt"
-            ],
-            text:
-                "den Arbeitsbereich aufgeräumt"
-        },
-
-        {
-            such: [
-                "werkzeug"
-            ],
-            text:
-                "mit den benötigten Werkzeugen gearbeitet"
-        }
-
-    ];
-
-
-    const gesamtText =
-        (
-            notizen +
-            " " +
-            stichwoerter.join(" ")
-        ).toLowerCase();
-
-
-    regeln.forEach(regel => {
-
-        const gefunden =
-            regel.such.some(
-                wort =>
-                    gesamtText.includes(wort)
-            );
-
-        if (
-            gefunden &&
-            !aktivitaeten.includes(
-                regel.text
-            )
-        ) {
-
-            aktivitaeten.push(
-                regel.text
-            );
-
-        }
-
-    });
-
-
-    /*
-       Wenn keine bekannte Tätigkeit erkannt wurde,
-       bleiben wir bewusst bei den tatsächlichen
-       Notizen.
-    */
-
-    if (
-        aktivitaeten.length === 0 &&
-        alleInfos.length === 0
-    ) {
-
-        return (
-            "Heute habe ich " +
-            "an den in meinen Notizen genannten Aufgaben gearbeitet."
-        );
-
-    }
-
-
-    let einleitung;
-
-
-    if (stil === "kurz") {
-
-        einleitung =
-            "Heute habe ich ";
-
-    } else {
-
-        einleitung =
-            "Heute war ich im Rahmen meiner Ausbildung tätig. Dabei habe ich ";
-
-    }
-
-
-    /*
-       Tätigkeiten verbinden
-    */
-
-    let text = "";
-
-
-    if (aktivitaeten.length === 1) {
-
-        text =
-            einleitung +
-            aktivitaeten[0] +
-            ".";
-
-    }
-
-    else if (aktivitaeten.length === 2) {
-
-        text =
-            einleitung +
-            aktivitaeten[0] +
-            " und " +
-            aktivitaeten[1] +
-            ".";
-
-    }
-
-    else if (aktivitaeten.length > 2) {
-
-        const letzte =
-            aktivitaeten[
-                aktivitaeten.length - 1
-            ];
-
-        const vorherige =
-            aktivitaeten.slice(
-                0,
-                -1
-            ).join(", ");
-
-        text =
-            einleitung +
-            vorherige +
-            " sowie " +
-            letzte +
-            ".";
-
-    }
-
-
-    /*
-       Originalnotizen ergänzen,
-       wenn darin konkrete Informationen stehen,
-       die nicht durch unsere Regeln erkannt wurden.
-    */
-
-    const unbekannteNotizen =
-        saetze.filter(satz => {
-
-            const lower =
-                satz.toLowerCase();
-
-            return !regeln.some(
-                regel =>
-                    regel.such.some(
-                        wort =>
-                            lower.includes(wort)
-                    )
-            );
-
-        });
-
-
-    if (
-        unbekannteNotizen.length > 0 &&
-        stil !== "kurz"
-    ) {
-
-        text +=
-            " Zusätzlich " +
-            formatiereNotizen(
-                unbekannteNotizen
-            ) +
-            ".";
-
-    }
-
-
-    /*
-       Arbeitszeit
-    */
-
-    if (
-        daten.arbeitszeit &&
-        stil !== "kurz"
-    ) {
-
-        text +=
-            " Die Arbeitszeit betrug " +
-            daten.arbeitszeit +
-            ".";
-
-    }
-
-
-    /*
-       Professioneller Stil
-    */
-
-    if (stil === "professionell") {
-
-        text =
-            text
-                .replace(
-                    "Heute war ich",
-                    "Im Rahmen meiner Ausbildung war ich"
-                );
-
-    }
-
-
-    /*
-       Ausführlicher Stil
-    */
-
-    if (
-        stil === "ausführlich" &&
-        aktivitaeten.length > 0
-    ) {
-
-        text +=
-            " Dabei konnte ich meine praktischen Kenntnisse anwenden und meine Erfahrungen im Arbeitsablauf erweitern.";
-
-    }
-
-
-    /*
-       Beruf einbauen
-    */
-
-    if (
-        beruf &&
-        stil === "ausführlich"
-    ) {
-
-        text =
-            "Im Rahmen meiner Ausbildung zum " +
-            beruf +
-            " " +
-            text.charAt(0).toLowerCase() +
-            text.slice(1);
-
-    }
-
-
-    return ersterBuchstabeGross(
-        text.trim()
-    );
-
-}
-
-
-/* =====================================================
-   NOTIZEN FORMATIEREN
-===================================================== */
-
-function formatiereNotizen(notizen) {
-
-    if (notizen.length === 1) {
-
-        return (
-            "habe ich außerdem " +
-            notizen[0].toLowerCase()
-        );
-
-    }
-
-
-    if (notizen.length === 2) {
-
-        return (
-            "habe ich außerdem " +
-            notizen[0].toLowerCase() +
-            " und " +
-            notizen[1].toLowerCase()
-        );
-
-    }
-
-
-    return (
-        "habe ich außerdem " +
-        notizen
-            .map(x => x.toLowerCase())
-            .join(", ")
-    );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    BERICHT BEARBEITEN
-===================================================== */
+========================================================= */
 
 function berichtBearbeiten() {
 
-    const alterText =
-        document.getElementById("bericht")
-        .textContent;
+    const element =
+        document.getElementById("bericht");
 
+    const aktuellerText =
+        element.textContent;
 
     if (
-        alterText ===
-        "Noch kein Bericht erstellt."
+        !aktuellerText ||
+        aktuellerText === "Noch kein Bericht erstellt."
     ) {
 
-        alert(
-            "Erstelle zuerst einen Bericht."
-        );
+        status("Es gibt noch keinen Bericht zum Bearbeiten.");
 
         return;
-
     }
 
 
     const neuerText =
         prompt(
-            "Hier kannst du deinen Bericht bearbeiten:",
-            alterText
+            "Bearbeite deinen Bericht:",
+            aktuellerText
         );
 
 
-    if (
-        neuerText !== null &&
-        neuerText.trim()
-    ) {
+    if (neuerText !== null) {
 
-        const sauber =
-            neuerText.trim();
-
-        document.getElementById("bericht")
-            .textContent =
-            sauber;
+        element.textContent = neuerText;
 
         tage[aktuellerTag].bericht =
-            sauber;
+            neuerText;
 
-        updateWeekOverview();
+        speichereAktuellenTag();
 
+        status("✏️ Bericht wurde geändert.");
     }
-
 }
 
 
-/* =====================================================
-   SPEICHERN
-===================================================== */
+/* =========================================================
+   BERICHT SPEICHERN
+========================================================= */
 
-function speichern() {
+function berichtSpeichern() {
 
-    speichereAktuelleEingabe();
+    const text =
+        document.getElementById("bericht").textContent;
 
-    const daten = {
+    if (
+        !text ||
+        text === "Noch kein Bericht erstellt."
+    ) {
 
-        beruf:
-            document.getElementById("beruf")
-                .value,
+        status("Erstelle zuerst einen Bericht.");
 
-        woche:
-            document.getElementById("woche")
-                .value,
-
-        stil:
-            document.getElementById("stil")
-                .value,
-
-        tage:
-            JSON.parse(
-                JSON.stringify(tage)
-            ),
-
-        gespeichertAm:
-            new Date()
-                .toLocaleString("de-DE")
-
-    };
+        return;
+    }
 
 
-    const alte =
+    const gespeicherte =
         JSON.parse(
             localStorage.getItem(
-                "berichtshefte"
+                "berichtsheft_ki_gespeichert"
             ) || "[]"
         );
 
 
-    alte.push(daten);
+    gespeicherte.unshift({
+
+        id: Date.now(),
+
+        tag: aktuellerTag,
+
+        woche:
+            document.getElementById("woche").value,
+
+        beruf:
+            document.getElementById("beruf").value,
+
+        stil:
+            document.getElementById("stil").value,
+
+        text: text,
+
+        datum:
+            new Date().toLocaleString("de-DE")
+
+    });
 
 
     localStorage.setItem(
-        "berichtshefte",
-        JSON.stringify(alte)
+        "berichtsheft_ki_gespeichert",
+        JSON.stringify(gespeicherte)
     );
 
 
     zeigeGespeicherteBerichte();
 
-
-    alert(
-        "✅ Das Berichtsheft wurde gespeichert."
-    );
-
+    status("💾 Bericht wurde gespeichert.");
 }
 
 
-/* =====================================================
-   GESPEICHERTE BERICHTE
-===================================================== */
+/* =========================================================
+   GESPEICHERTE BERICHTE ANZEIGEN
+========================================================= */
 
 function zeigeGespeicherteBerichte() {
 
-    const element =
+    const container =
         document.getElementById(
             "gespeicherteBerichte"
         );
 
 
-    const daten =
+    const gespeicherte =
         JSON.parse(
             localStorage.getItem(
-                "berichtshefte"
+                "berichtsheft_ki_gespeichert"
             ) || "[]"
         );
 
 
-    if (!daten.length) {
+    container.innerHTML = "";
 
-        element.innerHTML =
-            "Noch keine Berichte gespeichert.";
+
+    if (gespeicherte.length === 0) {
+
+        container.innerHTML =
+            '<div class="small">Noch keine Berichte gespeichert.</div>';
 
         return;
-
     }
 
 
-    element.innerHTML = "";
+    gespeicherte.forEach(bericht => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "saved-item";
 
 
-    daten
-        .slice()
-        .reverse()
-        .forEach(
-            (bericht, index) => {
+        const title =
+            document.createElement("div");
 
-                const div =
-                    document.createElement(
-                        "div"
-                    );
+        title.className = "saved-title";
 
-                div.className =
-                    "saved-item";
+        title.textContent =
+            `${bericht.tag} – ${bericht.woche || "Keine Woche"}`;
 
 
-                const info =
-                    document.createElement(
-                        "div"
-                    );
+        const date =
+            document.createElement("div");
+
+        date.className = "saved-date";
+
+        date.textContent =
+            bericht.datum;
 
 
-                const title =
-                    document.createElement(
-                        "strong"
-                    );
+        const preview =
+            document.createElement("div");
 
-                title.textContent =
-                    bericht.woche ||
-                    "Ohne Wochenangabe";
+        preview.className = "small";
 
+        preview.style.marginTop = "8px";
 
-                const small =
-                    document.createElement(
-                        "div"
-                    );
-
-                small.className =
-                    "small";
-
-                small.textContent =
-                    (
-                        bericht.beruf ||
-                        "Beruf nicht angegeben"
-                    ) +
-                    " · " +
-                    bericht.gespeichertAm;
+        preview.textContent =
+            bericht.text.substring(0, 180) +
+            (bericht.text.length > 180 ? "..." : "");
 
 
-                info.appendChild(title);
+        const actions =
+            document.createElement("div");
 
-                info.appendChild(small);
-
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
-
-                button.className =
-                    "secondary";
-
-                button.textContent =
-                    "Ansehen";
+        actions.className =
+            "saved-actions";
 
 
-                button.onclick = () => {
+        const loadButton =
+            document.createElement("button");
 
-                    const originalIndex =
-                        daten.length -
-                        1 -
-                        index;
+        loadButton.className =
+            "primary";
 
-                    ladeGespeichertenBericht(
-                        daten[
-                            originalIndex
-                        ]
-                    );
+        loadButton.textContent =
+            "Laden";
 
-                };
+        loadButton.onclick = function() {
+
+            ladeGespeichertenBericht(
+                bericht.id
+            );
+        };
 
 
-                div.appendChild(info);
+        const deleteButton =
+            document.createElement("button");
 
-                div.appendChild(button);
+        deleteButton.className =
+            "danger";
 
-                element.appendChild(div);
+        deleteButton.textContent =
+            "Löschen";
 
-            }
-        );
+        deleteButton.onclick = function() {
 
+            loescheGespeichertenBericht(
+                bericht.id
+            );
+        };
+
+
+        actions.appendChild(loadButton);
+        actions.appendChild(deleteButton);
+
+
+        item.appendChild(title);
+        item.appendChild(date);
+        item.appendChild(preview);
+        item.appendChild(actions);
+
+
+        container.appendChild(item);
+
+    });
 }
 
 
-/* =====================================================
+/* =========================================================
    GESPEICHERTEN BERICHT LADEN
-===================================================== */
+========================================================= */
 
-function ladeGespeichertenBericht(
-    daten
-) {
+function ladeGespeichertenBericht(id) {
 
-    document.getElementById(
-        "beruf"
-    ).value =
-        daten.beruf || "";
-
-
-    document.getElementById(
-        "woche"
-    ).value =
-        daten.woche || "";
+    const gespeicherte =
+        JSON.parse(
+            localStorage.getItem(
+                "berichtsheft_ki_gespeichert"
+            ) || "[]"
+        );
 
 
-    document.getElementById(
-        "stil"
-    ).value =
-        daten.stil || "normal";
+    const gefunden =
+        gespeicherte.find(
+            bericht => bericht.id === id
+        );
 
 
-    Object.keys(tage).forEach(tag => {
+    if (!gefunden) return;
 
-        if (daten.tage[tag]) {
 
-            tage[tag] =
-                daten.tage[tag];
+    document.getElementById("woche").value =
+        gefunden.woche || "";
 
-        }
+    document.getElementById("beruf").value =
+        gefunden.beruf || "";
 
-    });
+    document.getElementById("stil").value =
+        gefunden.stil || "normal";
 
 
     aktuellerTag =
-        "Montag";
+        gefunden.tag;
+
+
+    tage[aktuellerTag].bericht =
+        gefunden.text;
+
+
+    ladeAktuellenTag();
 
 
     document
-        .querySelectorAll(".day-button")
-        .forEach((button,index) => {
+        .querySelectorAll(".tag")
+        .forEach(button => {
 
             button.classList.toggle(
                 "active",
-                index === 0
+                button.textContent.trim() === aktuellerTag
             );
 
         });
 
 
-    document.getElementById(
-        "dayTitle"
-    ).textContent =
-        "Montag";
-
-
-    ladeTag();
-
-    updateWeekOverview();
-
-
-    alert(
-        "✅ Berichtsheft wurde geladen."
-    );
-
+    status("📂 Bericht wurde geladen.");
 }
 
 
-/* =====================================================
-   WOCHENÜBERSICHT
-===================================================== */
+/* =========================================================
+   GESPEICHERTEN BERICHT LÖSCHEN
+========================================================= */
 
-function updateWeekOverview() {
+function loescheGespeichertenBericht(id) {
+
+    const bestaetigt =
+        confirm(
+            "Möchtest du diesen Bericht wirklich löschen?"
+        );
+
+
+    if (!bestaetigt) return;
+
+
+    let gespeicherte =
+        JSON.parse(
+            localStorage.getItem(
+                "berichtsheft_ki_gespeichert"
+            ) || "[]"
+        );
+
+
+    gespeicherte =
+        gespeicherte.filter(
+            bericht => bericht.id !== id
+        );
+
+
+    localStorage.setItem(
+        "berichtsheft_ki_gespeichert",
+        JSON.stringify(gespeicherte)
+    );
+
+
+    zeigeGespeicherteBerichte();
+
+    status("🗑️ Bericht wurde gelöscht.");
+}
+
+
+/* =========================================================
+   WOCHENÜBERSICHT
+========================================================= */
+
+function aktualisiereWochenuebersicht() {
 
     const container =
         document.getElementById(
-            "weekOverview"
+            "wochenUebersicht"
         );
 
 
@@ -1714,169 +1630,337 @@ function updateWeekOverview() {
 
     Object.keys(tage).forEach(tag => {
 
-        const div =
-            document.createElement(
-                "div"
-            );
+        const daten =
+            tage[tag];
 
+
+        const div =
+            document.createElement("div");
 
         div.className =
             "week-day";
 
 
-        if (
-            tage[tag].bericht &&
-            tage[tag].bericht !==
-                "Noch kein Bericht erstellt."
-        ) {
+        const titel =
+            document.createElement("strong");
 
-            div.classList.add("done");
-
-        }
-
-
-        const title =
-            document.createElement(
-                "strong"
-            );
-
-        title.textContent =
+        titel.textContent =
             tag;
 
 
-        const status =
-            document.createElement(
-                "span"
-            );
+        const info =
+            document.createElement("div");
 
-        status.className =
+        info.className =
             "small";
 
 
-        status.textContent =
-            tage[tag].bericht
-                ? "✅ Bericht vorhanden"
-                : "Noch leer";
+        if (
+            daten.bericht &&
+            daten.bericht !==
+            "Noch kein Bericht erstellt."
+        ) {
+
+            info.textContent =
+                "✅ Bericht vorhanden";
+
+        } else if (
+            daten.stichwoerter ||
+            daten.notizen
+        ) {
+
+            info.textContent =
+                "📝 Eingaben vorhanden";
+
+        } else {
+
+            info.textContent =
+                "⚪ Noch leer";
+        }
 
 
-        div.appendChild(title);
-
-        div.appendChild(status);
-
-
-        div.onclick = () => {
-
-            const buttons =
-                document.querySelectorAll(
-                    ".day-button"
-                );
-
-
-            const tageArray =
-                Object.keys(tage);
-
-
-            const index =
-                tageArray.indexOf(tag);
-
-
-            if (buttons[index]) {
-
-                buttons[index].click();
-
-            }
-
-        };
-
+        div.appendChild(titel);
+        div.appendChild(info);
 
         container.appendChild(div);
 
     });
-
 }
 
 
-/* =====================================================
+/* =========================================================
    WOCHENBERICHT
-===================================================== */
+========================================================= */
 
-function erstelleWochenbericht() {
+function wochenberichtErstellen() {
 
-    speichereAktuelleEingabe();
+    speichereAktuellenTag();
 
 
-    const berichte = [];
+    let vorhandeneBerichte = [];
 
 
     Object.keys(tage).forEach(tag => {
 
+        const bericht =
+            tage[tag].bericht;
+
+
         if (
-            tage[tag].bericht &&
-            tage[tag].bericht !==
-                "Noch kein Bericht erstellt."
+            bericht &&
+            bericht !==
+            "Noch kein Bericht erstellt."
         ) {
 
-            berichte.push(
-                tag +
-                ": " +
-                tage[tag].bericht
+            vorhandeneBerichte.push(
+                `${tag}: ${bericht}`
             );
-
         }
 
     });
 
 
-    if (!berichte.length) {
+    if (vorhandeneBerichte.length === 0) {
 
-        alert(
-            "Bitte erstelle zuerst mindestens einen Tagesbericht."
+        status(
+            "Erstelle zuerst mindestens einen Tagesbericht."
         );
 
         return;
-
     }
 
 
+    const beruf =
+        document.getElementById("beruf").value;
+
+
+    const woche =
+        document.getElementById("woche").value;
+
+
     let text =
-        "Wochenbericht\n\n";
+        `Wochenbericht${woche ? " – " + woche : ""}`;
+
+
+    if (beruf) {
+
+        text +=
+            `\nAusbildungsberuf: ${beruf}`;
+    }
 
 
     text +=
-        berichte.join("\n\n");
+        "\n\n";
+
+
+    text +=
+        "In dieser Woche führte ich verschiedene praktische und fachbezogene Tätigkeiten im Rahmen meiner Ausbildung durch.\n\n";
+
+
+    text +=
+        vorhandeneBerichte.join("\n\n");
+
+
+    text +=
+        "\n\nDie durchgeführten Arbeiten halfen mir dabei, meine praktischen Kenntnisse zu erweitern und bereits erlernte Inhalte im Arbeitsalltag anzuwenden.";
 
 
     document.getElementById(
         "wochenbericht"
-    ).textContent =
-        text;
+    ).textContent = text;
 
+
+    status(
+        "📚 Wochenbericht wurde erstellt."
+    );
 }
 
 
-/* =====================================================
+/* =========================================================
+   EINGABEN LÖSCHEN
+========================================================= */
+
+function eingabenLoeschen() {
+
+    const bestaetigt =
+        confirm(
+            `Möchtest du die Eingaben für ${aktuellerTag} löschen?`
+        );
+
+
+    if (!bestaetigt) return;
+
+
+    tage[aktuellerTag] = {
+
+        arbeitszeit: "",
+        thema: "",
+        stichwoerter: "",
+        notizen: "",
+        bericht: ""
+
+    };
+
+
+    ladeAktuellenTag();
+
+    aktualisiereWochenuebersicht();
+
+    localStorage.setItem(
+        "berichtsheft_ki_tage",
+        JSON.stringify(tage)
+    );
+
+
+    status(
+        `🗑️ ${aktuellerTag} wurde geleert.`
+    );
+}
+
+
+/* =========================================================
+   ZEICHENZÄHLER
+========================================================= */
+
+function aktualisiereZeichenzaehler() {
+
+    const feld =
+        document.getElementById("notizen");
+
+
+    document.getElementById("zeichen")
+        .textContent =
+        feld.value.length;
+}
+
+
+document
+    .getElementById("notizen")
+    .addEventListener(
+        "input",
+        aktualisiereZeichenzaehler
+    );
+
+
+/* =========================================================
    AUTOMATISCH SPEICHERN
-===================================================== */
+========================================================= */
 
 setInterval(() => {
 
-    speichereAktuelleEingabe();
+    speichereAktuellenTag();
 
 }, 3000);
 
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 
-ladeTag();
+function starten() {
 
-zeigeGespeicherteBerichte();
+    const gespeicherteTage =
+        localStorage.getItem(
+            "berichtsheft_ki_tage"
+        );
 
-updateWeekOverview();
+
+    if (gespeicherteTage) {
+
+        try {
+
+            const daten =
+                JSON.parse(gespeicherteTage);
+
+
+            Object.keys(tage).forEach(tag => {
+
+                if (daten[tag]) {
+
+                    tage[tag] =
+                        daten[tag];
+                }
+
+            });
+
+        } catch (error) {
+
+            console.log(
+                "Gespeicherte Daten konnten nicht geladen werden."
+            );
+        }
+    }
+
+
+    const beruf =
+        localStorage.getItem(
+            "berichtsheft_ki_beruf"
+        );
+
+
+    if (beruf) {
+
+        document.getElementById(
+            "beruf"
+        ).value = beruf;
+    }
+
+
+    const woche =
+        localStorage.getItem(
+            "berichtsheft_ki_woche"
+        );
+
+
+    if (woche) {
+
+        document.getElementById(
+            "woche"
+        ).value = woche;
+    }
+
+
+    ladeAktuellenTag();
+
+    zeigeGespeicherteBerichte();
+
+    aktualisiereWochenuebersicht();
+
+    aktualisiereZeichenzaehler();
+}
+
+
+/* =========================================================
+   GRUNDDATEN AUTOMATISCH SPEICHERN
+========================================================= */
+
+document
+    .getElementById("beruf")
+    .addEventListener("input", function() {
+
+        localStorage.setItem(
+            "berichtsheft_ki_beruf",
+            this.value
+        );
+
+    });
+
+
+document
+    .getElementById("woche")
+    .addEventListener("input", function() {
+
+        localStorage.setItem(
+            "berichtsheft_ki_woche",
+            this.value
+        );
+
+    });
+
+
+starten();
 
 </script>
 
 </body>
 </html>
-```
